@@ -21,6 +21,8 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
+namespace Tests\Classes;
+
 class Constants {
 
     const RESOURCE_ENV_VAR = "RESOURCEKEY";

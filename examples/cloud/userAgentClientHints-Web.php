@@ -53,9 +53,9 @@
  *
  */
 
-// First we include the deviceDetectionPipelineBuilder
+namespace Examples\Cloud;
 
-require(__DIR__ . "/../../vendor/autoload.php");
+// First we include the deviceDetectionPipelineBuilder
 
 use fiftyone\pipeline\devicedetection\DeviceDetectionPipelineBuilder;
 use fiftyone\pipeline\core\Utils;

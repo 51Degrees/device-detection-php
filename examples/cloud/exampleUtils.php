@@ -21,8 +21,9 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
-require_once(__DIR__ . "/../../vendor/autoload.php");
+namespace Examples\Cloud;
 
+use Exception;
 use fiftyone\pipeline\core\Logger;
 
 class ExampleUtils

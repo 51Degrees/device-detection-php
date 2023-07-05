@@ -21,19 +21,18 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
-
-require(__DIR__ . "/../vendor/autoload.php");
-require(__DIR__ . "/../examples/cloud/gettingStartedConsole.php");
-require(__DIR__ . "/../examples/cloud/gettingStartedWeb.php");
-require(__DIR__ . "/../examples/cloud/tacLookupConsole.php");
-require(__DIR__ . "/../examples/cloud/nativeModelLookupConsole.php");
-require(__DIR__ . "/../examples/cloud/metadataConsole.php");
+namespace Tests;
 
 // Fake remote address for web integration
 
 $_SERVER["REMOTE_ADDR"] = "0.0.0.0";
 $_SERVER["REQUEST_URI"] = "http://localhost";
 
+use Examples\Cloud\ExampleUtils;
+use Examples\Cloud\GettingStartedConsole;
+use Examples\Cloud\MetaDataConsole;
+use Examples\Cloud\NativeModelLookupConsole;
+use Examples\Cloud\TacLookupConsole;
 use PHPUnit\Framework\TestCase;
 use fiftyone\pipeline\core\Logger;
 

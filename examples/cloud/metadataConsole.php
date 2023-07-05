@@ -47,8 +47,7 @@
  * - 51degrees/fiftyone.devicedetection
  */
 
-require_once(__DIR__ . "/exampleUtils.php");
-require_once(__DIR__ . "/../../vendor/autoload.php");
+namespace Examples\Cloud;
 
 use fiftyone\pipeline\devicedetection\DeviceDetectionPipelineBuilder;
 use fiftyone\pipeline\core\PipelineBuilder;

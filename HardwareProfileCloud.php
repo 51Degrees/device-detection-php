@@ -21,10 +21,7 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
-
 namespace fiftyone\pipeline\devicedetection;
-
-require("vendor/autoload.php");
 
 use fiftyone\pipeline\cloudrequestengine\CloudEngine;
 use fiftyone\pipeline\cloudrequestengine\CloudRequestEngine;
