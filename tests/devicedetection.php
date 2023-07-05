@@ -21,13 +21,13 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
-
-require(__DIR__ . "/../vendor/autoload.php");
+namespace Tests;
 
 // Fake remote address for web integration
 
 $_SERVER["REMOTE_ADDR"] = "0.0.0.0";
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use fiftyone\pipeline\devicedetection\DeviceDetectionPipelineBuilder;
 

@@ -21,11 +21,12 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
-require(__DIR__ . "/../vendor/autoload.php");
-require_once(__DIR__ . '/classes/process.php');
-require_once(__DIR__ . '/classes/constants.php');
+namespace Tests;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
+use Tests\Classes\Constants;
+use Tests\Classes\Process;
 
 /**
  * @requires OS Linux
@@ -38,25 +39,25 @@ class ExampleWebTests extends TestCase {
     {
         // start server
         self::$process = new Process('php -S localhost:3000 examples/cloud/gettingStartedWeb.php');
-        self::$process->start();      
+        self::$process->start();
         if (self::$process->status()){
-			shell_exec("lsof -i tcp:3000 1>/dev/null 2>&1" );
+            shell_exec("lsof -i tcp:3000 1>/dev/null 2>&1" );
             echo "Getting Started Web example has started running.\n";
         }else{
             throw new Exception("Could not start the Getting Started Web example. \n");
-        } 
+        }
     }
 
     public static function tearDownAfterClass()
     {
         // stop server
         if(self::$process->stop()) {
-            echo "\nProcess stopped for Getting Started Web example. \n";        
-        }          
+            echo "\nProcess stopped for Getting Started Web example. \n";
+        }
     }
 
     public function testGettingStartedWeb()
-    {    
+    {
         $requestHeaders = Constants::UA_HEADER . Constants::CHROME_UA . '\r\n' ;
 
         $context = stream_context_create(array(
@@ -65,12 +66,12 @@ class ExampleWebTests extends TestCase {
                 'header' =>  $requestHeaders
             )
         ));
-      
+
         $data = @file_get_contents(Constants::URL, false, $context);
         $responseHeaders = self::parseHeaders($http_response_header);
 
         $this->assertEquals(200, $responseHeaders['response_code']);
-        
+
     }
 
     /**

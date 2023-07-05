@@ -21,11 +21,12 @@
  * such notice(s) shall fulfill the requirements of that article.
  * ********************************************************************* */
 
-require(__DIR__ . "/../vendor/autoload.php");
-require_once(__DIR__ . '/classes/process.php');
-require_once(__DIR__ . '/classes/constants.php');
+namespace Tests;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
+use Tests\Classes\Constants;
+use Tests\Classes\Process;
 
 /**
  * @requires OS Linux
