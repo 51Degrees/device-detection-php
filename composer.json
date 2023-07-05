@@ -29,6 +29,12 @@
       "HardwareProfileCloud.php"
     ]
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/",
+      "Examples\\": "examples/"
+    }
+  },
   "require": {
     "51degrees/fiftyone.pipeline.core": "4.*",
     "51degrees/fiftyone.pipeline.engines": "4.*",
