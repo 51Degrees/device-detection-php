@@ -1,0 +1,8 @@
+<map id="fiftyone\pipeline\cloudrequestengine\CloudEngine" name="fiftyone\pipeline\cloudrequestengine\CloudEngine">
+<area shape="rect" id="node1" title="This is a template for all 51Degrees cloud engines." alt="" coords="673,39,932,80"/>
+<area shape="rect" id="node5" href="$classfiftyone_1_1pipeline_1_1devicedetection_1_1_device_detection_cloud.html" title=" " alt="" coords="980,5,1215,47"/>
+<area shape="rect" id="node6" href="$classfiftyone_1_1pipeline_1_1devicedetection_1_1_hardware_profile_cloud.html" title=" " alt="" coords="980,71,1215,112"/>
+<area shape="rect" id="node2" href="$classfiftyone_1_1pipeline_1_1engines_1_1_cloud_engine_base.html" title="Intermediary between Engine and CloudEngine classes." alt="" coords="443,39,625,80"/>
+<area shape="rect" id="node3" href="$classfiftyone_1_1pipeline_1_1engines_1_1_engine.html" title="An engine is an extension of the Pipeline Core flowElement class It allows for a cache,..." alt="" coords="212,39,395,80"/>
+<area shape="rect" id="node4" href="$classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html" title="A FlowElement is placed inside a Pipeline It receives Evidence via a FlowData object It uses this to ..." alt="" coords="5,39,164,80"/>
+</map>
