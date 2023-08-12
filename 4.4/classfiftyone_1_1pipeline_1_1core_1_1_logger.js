@@ -11,5 +11,6 @@ var classfiftyone_1_1pipeline_1_1core_1_1_logger =
     [ "logInternal", "classfiftyone_1_1pipeline_1_1core_1_1_logger.html#a38291d3aa0777724f3e2e050cb96e5ab", null ],
     [ "logInternal", "classfiftyone_1_1pipeline_1_1core_1_1_logger.html#a38291d3aa0777724f3e2e050cb96e5ab", null ],
     [ "logInternal", "classfiftyone_1_1pipeline_1_1core_1_1_logger.html#a38291d3aa0777724f3e2e050cb96e5ab", null ],
-    [ "logInternal", "classfiftyone_1_1pipeline_1_1core_1_1_logger.html#a38291d3aa0777724f3e2e050cb96e5ab", null ]
+    [ "logInternal", "classfiftyone_1_1pipeline_1_1core_1_1_logger.html#a38291d3aa0777724f3e2e050cb96e5ab", null ],
+    [ "$settings", "classfiftyone_1_1pipeline_1_1core_1_1_logger.html#a5644395b6294fbaa447dc068b764153f", null ]
 ];

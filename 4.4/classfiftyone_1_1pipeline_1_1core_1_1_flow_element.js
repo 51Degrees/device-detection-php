@@ -37,5 +37,6 @@ var classfiftyone_1_1pipeline_1_1core_1_1_flow_element =
     [ "updatePropertyList", "classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html#a19340df19105ad67b20fe06ec261b5d9", null ],
     [ "updatePropertyList", "classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html#a19340df19105ad67b20fe06ec261b5d9", null ],
     [ "$dataKey", "classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html#a2f352a697f96332bfa5f4546c3fe638b", null ],
+    [ "$pipelines", "classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html#a57ba0db7515e0eac65320ce845aae426", null ],
     [ "$properties", "classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html#abbfb84fc6c7c8c753afe5ec503bbacd0", null ]
 ];

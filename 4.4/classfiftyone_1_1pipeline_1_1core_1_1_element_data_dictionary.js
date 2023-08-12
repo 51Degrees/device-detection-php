@@ -11,5 +11,6 @@ var classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary =
     [ "getInternal", "classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary.html#aca250f863885b31fece28c7fb66f349d", null ],
     [ "getInternal", "classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary.html#aca250f863885b31fece28c7fb66f349d", null ],
     [ "getInternal", "classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary.html#aca250f863885b31fece28c7fb66f349d", null ],
-    [ "getInternal", "classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary.html#aca250f863885b31fece28c7fb66f349d", null ]
+    [ "getInternal", "classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary.html#aca250f863885b31fece28c7fb66f349d", null ],
+    [ "$contents", "classfiftyone_1_1pipeline_1_1core_1_1_element_data_dictionary.html#a5d8d20ed06cce07f40a20f53a7395e5a", null ]
 ];

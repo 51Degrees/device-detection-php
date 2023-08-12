@@ -12,5 +12,7 @@ var classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element =
     [ "processInternal", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a7e2ffd726a1cf0beb6b676232e0953f8", null ],
     [ "processInternal", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a7e2ffd726a1cf0beb6b676232e0953f8", null ],
     [ "processInternal", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a7e2ffd726a1cf0beb6b676232e0953f8", null ],
-    [ "$dataKey", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a970928163a9719d02259d23ea61c81d0", null ]
+    [ "$dataKey", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a970928163a9719d02259d23ea61c81d0", null ],
+    [ "$minify", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a9cc77b9829d653975f301963b2cb2d44", null ],
+    [ "$settings", "classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a2730699c0677c6a556b49725f1c3cc28", null ]
 ];
