@@ -30,6 +30,18 @@ var annotated =
           [ "Utils", "classfiftyone_1_1pipeline_1_1core_1_1_utils.html", "classfiftyone_1_1pipeline_1_1core_1_1_utils" ]
         ] ],
         [ "devicedetection", null, [
+          [ "examples", null, [
+            [ "cloud", null, [
+              [ "classes", null, [
+                [ "ExampleUtils", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_example_utils.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_example_utils" ],
+                [ "GettingStartedConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console" ],
+                [ "GettingStartedWeb", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web" ],
+                [ "MetadataConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_metadata_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_metadata_console" ],
+                [ "NativeModelLookupConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_native_model_lookup_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_native_model_lookup_console" ],
+                [ "TacLookupConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_tac_lookup_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_tac_lookup_console" ]
+              ] ]
+            ] ]
+          ] ],
           [ "DeviceDetectionCloud", "classfiftyone_1_1pipeline_1_1devicedetection_1_1_device_detection_cloud.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1_device_detection_cloud" ],
           [ "DeviceDetectionPipelineBuilder", "classfiftyone_1_1pipeline_1_1devicedetection_1_1_device_detection_pipeline_builder.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1_device_detection_pipeline_builder" ],
           [ "HardwareProfileCloud", "classfiftyone_1_1pipeline_1_1devicedetection_1_1_hardware_profile_cloud.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1_hardware_profile_cloud" ]
@@ -51,11 +63,5 @@ var annotated =
     [ "ArrayLogger", "class_array_logger.html", "class_array_logger" ],
     [ "AstrologyFlowElement", "class_astrology_flow_element.html", "class_astrology_flow_element" ],
     [ "ExampleFlowElementA", "class_example_flow_element_a.html", "class_example_flow_element_a" ],
-    [ "ExampleFlowElementB", "class_example_flow_element_b.html", "class_example_flow_element_b" ],
-    [ "ExampleUtils", "class_example_utils.html", "class_example_utils" ],
-    [ "GettingStartedConsole", "class_getting_started_console.html", "class_getting_started_console" ],
-    [ "GettingStartedWeb", "class_getting_started_web.html", "class_getting_started_web" ],
-    [ "MetaDataConsole", "class_meta_data_console.html", "class_meta_data_console" ],
-    [ "NativeModelLookupConsole", "class_native_model_lookup_console.html", "class_native_model_lookup_console" ],
-    [ "TacLookupConsole", "class_tac_lookup_console.html", "class_tac_lookup_console" ]
+    [ "ExampleFlowElementB", "class_example_flow_element_b.html", "class_example_flow_element_b" ]
 ];

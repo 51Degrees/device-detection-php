@@ -1,0 +1,4 @@
+var classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_tac_lookup_console =
+[
+    [ "run", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_tac_lookup_console.html#a6551143bbb110fffacbdbfa38e5de970", null ]
+];
