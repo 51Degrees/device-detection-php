@@ -10,5 +10,6 @@ var classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine =
     [ "$baseURL", "classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine.html#af92efb7495f4f279f442bc07d05da924", null ],
     [ "$cloudRequestOrigin", "classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine.html#a0515e5c5f04d222b0b5316fd04fe928e", null ],
     [ "$dataKey", "classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine.html#a063f74bce0b391e8b45bb80b279f10b7", null ],
-    [ "$flowElementProperties", "classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine.html#a03a08a381856a935f1c754ac929f519e", null ]
+    [ "$flowElementProperties", "classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine.html#a03a08a381856a935f1c754ac929f519e", null ],
+    [ "$resourceKey", "classfiftyone_1_1pipeline_1_1cloudrequestengine_1_1_cloud_request_engine.html#a634f84a8f8bf9c481a693c7f365e6db0", null ]
 ];
