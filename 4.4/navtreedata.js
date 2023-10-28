@@ -35,8 +35,7 @@ var NAVTREEHIDESYNC = true;
 
 var NAVTREEINDEX =
 [
-"../../documentation/4.4/index.html",
-"classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html#a2730699c0677c6a556b49725f1c3cc28"
+"../../documentation/4.4/index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

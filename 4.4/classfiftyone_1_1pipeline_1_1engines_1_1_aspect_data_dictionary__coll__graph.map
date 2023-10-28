@@ -1,5 +1,0 @@
-<map id="fiftyone\pipeline\engines\AspectDataDictionary" name="fiftyone\pipeline\engines\AspectDataDictionary">
-<area shape="rect" id="node1" title="aspectData class extension that stores content as an array Similar to elementDataDictionary in the Pi..." alt="" coords="5,184,188,225"/>
-<area shape="rect" id="node2" href="$classfiftyone_1_1pipeline_1_1engines_1_1_aspect_data.html" title="aspectData extends elementData by adding the option of a missing property service It also allows prop..." alt="" coords="5,95,188,136"/>
-<area shape="rect" id="node3" href="$classfiftyone_1_1pipeline_1_1core_1_1_element_data.html" title="Stores information created by a FlowElement based on FlowData." alt="" coords="17,5,176,47"/>
-</map>

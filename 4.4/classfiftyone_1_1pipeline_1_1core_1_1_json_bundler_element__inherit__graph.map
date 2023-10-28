@@ -1,4 +1,0 @@
-<map id="fiftyone\pipeline\core\JsonBundlerElement" name="fiftyone\pipeline\core\JsonBundlerElement">
-<area shape="rect" id="node1" title="The JSONBundler aggregates all properties from FlowElements into a JSON object It is used for retriev..." alt="" coords="5,95,164,136"/>
-<area shape="rect" id="node2" href="$classfiftyone_1_1pipeline_1_1core_1_1_flow_element.html" title="A FlowElement is placed inside a Pipeline It receives Evidence via a FlowData object It uses this to ..." alt="" coords="5,5,164,47"/>
-</map>

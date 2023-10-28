@@ -1,4 +1,0 @@
-<map id="fiftyone\pipeline\core\PipelineBuilder" name="fiftyone\pipeline\core\PipelineBuilder">
-<area shape="rect" id="node1" title="A PipelineBuilder generates a Pipeline object Before construction of the Pipeline,..." alt="" coords="43,5,202,47"/>
-<area shape="rect" id="node2" href="$classfiftyone_1_1pipeline_1_1devicedetection_1_1_device_detection_pipeline_builder.html" title="Extension of pipelineBuilder class that allows for the quick generation of a device detection pipelin..." alt="" coords="5,95,240,136"/>
-</map>
