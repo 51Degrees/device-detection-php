@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_device-detection-
 </table>
 </div><h2>Tests</h2>
 <p>This repo has tests for the examples. To run the tests, make sure PHPUnit is installed then, in the root of this repo, call:</p>
-<div class="c-code__block c-code__block--outline"><div class="c-code__line">phpunit --log-junit test-results.xml</div></div><h2>On-premise device detection</h2>
+<div class="c-code__block c-code__block--outline"><div class="c-code__line">phpunit --fail-on-warning --display-warnings --log-junit test-results.xml</div></div><h2>On-premise device detection</h2>
 <p>The on-premise implementation of device detection is much faster but requires more memory and processing power than the cloud version. Unfortunately, distributing the on-premise package via composer would require the inclusion of binary executables (.so/.dll) that are not permitted. If you wish to use the on-premise version then you will need to clone the <a href="https://github.com/51Degrees/device-detection-php-onpremise">on-premise repository</a> and follow the instructions in the readme to build the required modules. This is a fairly involved process so feel free to <a href="#" onclick="location.href='mai'+'lto:'+'sup'+'po'+'rt@'+'51'+'deg'+'re'+'es.'+'co'+'m'; return false;">contact us</a> if you are having difficulties.</p>
 <h2>Development</h2>
 <p>When making changes to this repository, it may be necessary to link to a local development version of pipeline dependencies. For information on this, see <a href="https://getcomposer.org/doc/05-repositories.md#path">Composer local path</a>.</p>
