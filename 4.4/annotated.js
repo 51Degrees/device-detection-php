@@ -7,7 +7,7 @@ var annotated =
             [ "cloud", null, [
               [ "classes", null, [
                 [ "ExampleUtils", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_example_utils.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_example_utils" ],
-                [ "GettingStartedConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console" ],
+                [ "GettingStartedConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console.html", null ],
                 [ "GettingStartedWeb", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web" ],
                 [ "MetadataConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_metadata_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_metadata_console" ],
                 [ "NativeModelLookupConsole", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_native_model_lookup_console.html", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_native_model_lookup_console" ],

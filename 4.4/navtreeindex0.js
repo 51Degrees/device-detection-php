@@ -32,8 +32,6 @@ var NAVTREEINDEX0 =
 "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_example_utils.html#ab8d32a5d5dc5cc4adcbdd7d83bc2dd1c":[2,0,0,0,0,0,0,0,8],
 "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_example_utils.html#aed0900af198d02425ec3e3ac6ffe0c29":[2,0,0,0,0,0,0,0,1],
 "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console.html":[2,0,0,0,0,0,0,1],
-"classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console.html#a52148a38542e01532cf58b64dc35f3fe":[2,0,0,0,0,0,0,1,1],
-"classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_console.html#a8dacf8c26da446e4da657867268b227f":[2,0,0,0,0,0,0,1,0],
 "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web.html":[2,0,0,0,0,0,0,2],
 "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web.html#af8612798ee2bfccb0f1c7b294af4d0c2":[2,0,0,0,0,0,0,2,0],
 "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_metadata_console.html":[2,0,0,0,0,0,0,3],
