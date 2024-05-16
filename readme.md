@@ -22,13 +22,22 @@ to use the Cloud API. You can create resource keys using our
 
 ## Examples
 
+**Note: Examples run on Linux and macOS. We don't test on Windows environments as it is a rare choice for PHP.**
+
 To run the examples, you will need PHP and composer installed.
-Once these are available, install the dependencies required by the examples. 
+Once these are available, install (or update) the dependencies required by the examples. 
 Navigate to the repository root and execute:
 
-```
+```sh
 composer install
 ```
+or 
+
+```sh
+composer update
+```
+if dependencies were install previously.
+
 
 This will create the vendor directory containing autoload.php.
 
@@ -37,13 +46,13 @@ Now navigate to the examples directory and start a PHP server with the relevant 
 For example:
 
 ```
-php -S localhost:3000 cloud/gettingstarted.php
+resource_key=YOUR_RESOURCE_KEY php -S localhost:3000 cloud/gettingStartedWeb.php
 ```
 
 or to run in a terminal
 
 ```
-php cloud/gettingstarted.php
+resource_key=YOUR_RESOURCE_KEY php cloud/gettingStartedConsole.php
 ```
 
 This will start a local web server listening on port 3000. 
