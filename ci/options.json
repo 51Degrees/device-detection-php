@@ -1,5 +1,21 @@
 [
     {
+      "Name": "Ubuntu_PHP_8.3",
+      "Image": "ubuntu-latest",
+      "Language": "php",
+      "LanguageVersion": "8.3",
+      "RunPerformance": true,
+      "PackageRequirement": true
+    },
+    {
+      "Name": "macOS_PHP_8.3",
+      "Image": "macos-latest",
+      "Language": "php",
+      "LanguageVersion": "8.3",
+      "RunPerformance": true,
+      "PackageRequirement": true
+    },
+    {
       "Name": "Ubuntu_PHP_8.2",
       "Image": "ubuntu-latest",
       "Language": "php",
