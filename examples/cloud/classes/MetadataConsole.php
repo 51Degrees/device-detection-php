@@ -39,7 +39,7 @@
  * cloud. If you are only using a single product (for example - device detection) then not all
  * of these keys will be relevant.
  *
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php-onpremise/blob/master/examples/cloud/metadataConsole.php).
+ * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/main/examples/cloud/classes/MetadataConsole.php).
  *
  * @include{doc} example-require-resourcekey.txt
  *
@@ -58,7 +58,7 @@ class MetadataConsole
      * In this example, we use the DeviceDetectionPipelineBuilder
      * and configure it in code. For more information about
      * pipelines in general see the documentation at
-     * http://51degrees.com/documentation/4.3/_concepts__configuration__builders__index.html.
+     * https://51degrees.com/documentation/4.4/_concepts__configuration__builders__index.html.
      *
      * @param string $resourceKey
      * @param \fiftyone\pipeline\core\Logger $logger
