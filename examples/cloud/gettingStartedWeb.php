@@ -59,7 +59,7 @@
  * ```
  * 
  * Results can also be accessed in client-side code by using the `fod` object. See the 
- * [JavaScriptBuilderElement](https://51degrees.com/pipeline-php/classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html)
+ * [JavaScriptBuilderElement](/documentation/4.5/apis/pipeline-php-core/classfiftyone_1_1pipeline_1_1core_1_1_javascript_builder_element.html)
  * for details on available settings such as changing the `fod` name.
  * ```{js}
  * window.onload = function () {
