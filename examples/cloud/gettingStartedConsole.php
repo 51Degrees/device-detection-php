@@ -31,7 +31,7 @@
  * @include{doc} example-require-resourcekey.txt
  *
  * Required Composer Dependencies:
- * - 51degrees/fiftyone.devicedetection
+ * - [51degrees/fiftyone.devicedetection](https://packagist.org/packages/51degrees/fiftyone.devicedetection)
  */
 
 require_once(__DIR__ . "/../../vendor/autoload.php");
