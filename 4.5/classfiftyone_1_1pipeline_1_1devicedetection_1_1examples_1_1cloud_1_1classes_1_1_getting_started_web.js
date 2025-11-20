@@ -1,0 +1,4 @@
+var classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web =
+[
+    [ "run", "classfiftyone_1_1pipeline_1_1devicedetection_1_1examples_1_1cloud_1_1classes_1_1_getting_started_web.html#af8612798ee2bfccb0f1c7b294af4d0c2", null ]
+];
