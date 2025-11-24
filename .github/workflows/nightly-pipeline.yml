@@ -1,0 +1,51 @@
+name: Nightly Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      dryrun:
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 4 * * *'
+
+jobs:
+  SubmoduleUpdate:
+    name: Nightly Submodule Update
+    uses: 51Degrees/common-ci/.github/workflows/nightly-submodule-update.yml@main
+    with:
+      repo-name: ${{ github.event.repository.name }}
+      org-name: ${{ github.event.repository.owner.login }}
+      dryrun: ${{ inputs.dryrun || false }}
+    secrets:
+      token: ${{ secrets.ACCESS_TOKEN }}
+
+  PullRequests:
+    if: ${{ !cancelled() }}
+    needs: SubmoduleUpdate
+    name: Nightly Pull Requests
+    uses: 51Degrees/common-ci/.github/workflows/nightly-pull-requests.yml@main
+    with:
+      repo-name: ${{ github.event.repository.name }}
+      org-name: ${{ github.event.repository.owner.login }}
+      dryrun: ${{ inputs.dryrun || false }}
+    secrets:
+      token: ${{ secrets.ACCESS_TOKEN }}
+      TestResourceKey: ${{ secrets.SUPER_RESOURCE_KEY }}
+      DeviceDetection: ${{ secrets.DEVICE_DETECTION_KEY }}
+      CsvUrl: ${{ secrets.CSV_URL }}
+
+  Publish:
+    if: ${{ !cancelled() }}
+    needs: PullRequests
+    name: Nightly Publish
+    uses: 51Degrees/common-ci/.github/workflows/nightly-publish.yml@main
+    with:
+      repo-name: ${{ github.event.repository.name }}
+      org-name: ${{ github.event.repository.owner.login }}
+      dryrun: ${{ inputs.dryrun || false }}
+    secrets:
+      token: ${{ secrets.ACCESS_TOKEN }}
+      TestResourceKey: ${{ secrets.SUPER_RESOURCE_KEY }}
+      DeviceDetection: ${{ secrets.DEVICE_DETECTION_KEY }}
+      CsvUrl: ${{ secrets.CSV_URL }}

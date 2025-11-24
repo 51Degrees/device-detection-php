@@ -1,27 +1,22 @@
-name: Nightly Publish Main
+name: Pull Requests
 
 on:
   workflow_dispatch:
     inputs:
       dryrun:
-        default: false
         type: boolean
-        description: Dry Run
-  workflow_run:
-    workflows: [Nightly PRs to Main]
-    types: [completed]
+        default: false
 
 jobs:
-  Nightly_Publish_Main:
-    uses: 51Degrees/common-ci/.github/workflows/nightly-publish-main.yml@main
+  PullRequests:
+    name: Pull Requests
+    uses: 51Degrees/common-ci/.github/workflows/nightly-pull-requests.yml@main
     with:
       repo-name: ${{ github.event.repository.name }}
       org-name: ${{ github.event.repository.owner.login }}
       dryrun: ${{ inputs.dryrun || false }}
-      build-platform: ubuntu-latest
-      cache-assets: true
     secrets:
       token: ${{ secrets.ACCESS_TOKEN }}
-      DeviceDetection: ${{ secrets.DEVICE_DETECTION_KEY }}
       TestResourceKey: ${{ secrets.SUPER_RESOURCE_KEY }}
+      DeviceDetection: ${{ secrets.DEVICE_DETECTION_KEY }}
       CsvUrl: ${{ secrets.CSV_URL }}
