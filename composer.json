@@ -1,6 +1,6 @@
 {
     "name": "51degrees/fiftyone.devicedetection",
-    "description": "Device detection engines for 51Degrees Pipeline API. Parse HTTP headers to detect hardware, operating system, browser, and crawler information.",
+    "description": "High-performance device detection engines for the 51Degrees Pipeline API. Accurately identify devices, operating systems, browsers, and crawlers from HTTP headers.",
     "keywords":
     [
         "user agent",
