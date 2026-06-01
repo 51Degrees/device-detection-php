@@ -95,9 +95,15 @@ class GettingStartedWeb
             'enableCookies' => true
         ];
 
-        $builder = new DeviceDetectionPipelineBuilder([
+        $builderSettings = [
             'resourceKey' => $resourceKey,
-            'javascriptBuilderSettings' => $javascriptBuilderSettings]);
+            'javascriptBuilderSettings' => $javascriptBuilderSettings];
+        // If a cloud endpoint is set in the environment, point the pipeline at it.
+        $cloudEndpoint = ExampleUtils::getCloudEndpoint();
+        if ($cloudEndpoint) {
+            $builderSettings['cloudEndPoint'] = $cloudEndpoint;
+        }
+        $builder = new DeviceDetectionPipelineBuilder($builderSettings);
 
         // To stop having to construct the pipeline
         // and re-make cloud API requests used during construction on every page load,
