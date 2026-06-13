@@ -205,6 +205,11 @@
             after the refresh.
         </p>
     </div>
+
+    <?php $output('<div class="c-eg-message">'); ?>
+    <?php $output('  <p class="c-eg-message__text">Want to try on-premise? <a href="https://51degrees.com/contact-us">Contact us</a> to discuss requirements.</p>'); ?>
+    <?php $output('  <a class="b-btn c-eg-message__cta" href="https://51degrees.com/contact-us">Contact us</a>'); ?>
+    <?php $output('</div>'); ?>
 </div>
 
 <!--
