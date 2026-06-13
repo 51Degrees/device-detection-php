@@ -1,8 +1,8 @@
 # 51Degrees PHP Device Detection
 
-![51Degrees](https://51degrees.com/DesktopModules/FiftyOne/Distributor/Logo.ashx?utm_source=github&utm_medium=repository&utm_content=readme_main&utm_campaign=php-open-source "Data rewards the curious") **PHP Device Detection**
+![51Degrees](https://51degrees.com/img/logo.png?utm_source=github&utm_medium=readme&utm_campaign=device-detection-php&utm_content=readme.md&utm_term=51degrees-php-device-detection "Data rewards the curious") **PHP Device Detection**
 
-[Developer Documentation](https://51degrees.com/device-detection-php/index.html?utm_source=github&utm_medium=repository&utm_content=documentation&utm_campaign=php-open-source "developer documentation")
+[Developer Documentation](https://51degrees.com/device-detection-php/index.html?utm_source=github&utm_medium=readme&utm_campaign=device-detection-php&utm_content=readme.md&utm_term=51degrees-php-device-detection "developer documentation")
 
 ## Introduction
 This project contains the source code for the PHP implementation of 51Degrees' 
@@ -11,14 +11,14 @@ cloud-based device detection engine for use with the
 
 ## Dependencies
 
-The [tested versions](https://51degrees.com/documentation/_info__tested_versions.html) page shows 
+The [tested versions](https://51degrees.com/documentation/_info__tested_versions.html?utm_source=github&utm_medium=readme&utm_campaign=device-detection-php&utm_content=readme.md&utm_term=dependencies) page shows 
 the PHP versions that we currently test against. The software may run fine against other 
 versions, but additional caution should be applied.
 
-You will require a [resource key](https://51degrees.com/documentation/_info__resource_keys.html)
+You will require a [resource key](https://51degrees.com/documentation/_info__resource_keys.html?utm_source=github&utm_medium=readme&utm_campaign=device-detection-php&utm_content=readme.md&utm_term=dependencies)
 to use the Cloud API. You can create resource keys using our 
-[configurator](https://configure.51degrees.com/), see our 
-[documentation](https://51degrees.com/documentation/_concepts__configurator.html) on how to use this.
+[configurator](https://configure.51degrees.com/?utm_source=github&utm_medium=readme&utm_campaign=device-detection-php&utm_content=readme.md&utm_term=dependencies), see our 
+[documentation](https://51degrees.com/documentation/_concepts__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=device-detection-php&utm_content=readme.md&utm_term=dependencies) on how to use this.
 
 ## Examples
 

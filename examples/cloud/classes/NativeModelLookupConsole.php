@@ -67,7 +67,7 @@ class NativeModelLookupConsole
         // This example creates the pipeline and engines in code. For a demonstration
         // of how to do this using a configuration file instead, see the TacLookup example.
         // For more information about builders in general see the documentation at
-        // http://51degrees.com/documentation/_concepts__configuration__builders__index.html
+        // https://51degrees.com/documentation/_concepts__configuration__builders__index.html?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-nativemodellookupconsole.php&utm_term=run
         $cloudRequestEngineSettings = ['resourceKey' => $resourceKey];
 
         // If a cloud endpoint has been provided then set the

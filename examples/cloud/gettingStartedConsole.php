@@ -71,10 +71,10 @@ if (strtolower(basename(__FILE__)) == strtolower(basename($_SERVER["SCRIPT_FILEN
                 ExampleUtils::RESOURCE_KEY_ENV_VAR . "', or configuration file." . PHP_EOL .
                 "The 51Degrees cloud service is accessed using a 'ResourceKey'. " .
                 "For more detail see " .
-                "http://51degrees.com/documentation/4.3/_info__resource_keys.html. " .
+                "https://51degrees.com/documentation/_info__resource_keys.html?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-gettingstartedconsole.php&utm_term=resource-key-required. " .
                 "A resource key with the properties required by this " .
                 "example can be created for free at " .
-                "https://configure.51degrees.com/g3gMZdPY. " .
+                "https://configure.51degrees.com/g3gMZdPY?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-gettingstartedconsole.php&utm_term=resource-key-required. " .
                 "Once complete, populated the environment variable " .
                 "mentioned at the start of this message with the key.";
             
