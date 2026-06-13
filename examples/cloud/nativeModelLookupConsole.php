@@ -68,12 +68,12 @@ if (basename(__FILE__) == basename($_SERVER["SCRIPT_FILENAME"]))
                 ExampleUtils::RESOURCE_KEY_ENV_VAR . "'." . PHP_EOL .
                 "The 51Degrees cloud service is accessed using a 'ResourceKey'. " .
                 "For more information " .
-                "see http://51degrees.com/documentation/_info__resource_keys.html. " .
+                "see https://51degrees.com/documentation/_info__resource_keys.html?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-nativemodellookupconsole.php&utm_term=resource-key-required. " .
                 "Native model lookup is not available as a free service. This means that " .
                 "you will first need a license key, which can be purchased from our " .
-                "pricing page: http://51degrees.com/pricing. Once this is done, a resource " .
+                "pricing page: https://51degrees.com/pricing?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-nativemodellookupconsole.php&utm_term=resource-key-required. Once this is done, a resource " .
                 "key with the properties required by this example can be created at " .
-                "https://configure.51degrees.com/QKyYH5XT. You can now populate the " .
+                "https://configure.51degrees.com/QKyYH5XT?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-nativemodellookupconsole.php&utm_term=resource-key-required. You can now populate the " .
                 "environment variable mentioned at the start of this message with the " .
                 "resource key or pass it as the first argument on the command line.";
 

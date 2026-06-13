@@ -34,7 +34,7 @@
  * The resource key is used as short-hand to store the particular set of
  * properties you are interested in as well as any associated license keys
  * that entitle you to increased request limits and/or paid-for properties.
- * You can create a resource key using the 51Degrees [Configurator](https://configure.51degrees.com).
+ * You can create a resource key using the 51Degrees [Configurator](https://configure.51degrees.com?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-failuretomatch.php&utm_term=header).
  *
  * Expected output:
  *
@@ -57,7 +57,7 @@ use fiftyone\pipeline\core\Logger;
 use fiftyone\pipeline\devicedetection\DeviceDetectionPipelineBuilder;
 use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils;
 
-// We then create a pipeline with the builder. Create your own resource key for free at https://configure.51degrees.com.
+// We then create a pipeline with the builder. Create your own resource key for free at https://configure.51degrees.com?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-failuretomatch.php&utm_term=top.
 
 // Check if there is a resource key in the environment variable and use
 // it if there is one. You will need to switch this for your own resource key.
@@ -72,7 +72,7 @@ if (empty($resourceKey)) {
     $message = 'No resource key specified in the environment variable or query parameter ';
     $message .= "'" . ExampleUtils::RESOURCE_KEY_ENV_VAR . "'." . PHP_EOL;
     $message .= 'Create a resource key with the properties required by this example';
-    $message .= 'at https://configure.51degrees.com' . '<br/>';
+    $message .= 'at https://configure.51degrees.com?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-failuretomatch.php&utm_term=resource-key-required' . '<br/>';
     $message .= 'Once complete, populate the environment variable or query parameter ';
     $message .= 'mentioned at the start of this message with the key.' . '<br/>';
     

@@ -58,7 +58,7 @@ class MetadataConsole
      * In this example, we use the DeviceDetectionPipelineBuilder
      * and configure it in code. For more information about
      * pipelines in general see the documentation at
-     * https://51degrees.com/documentation/4.4/_concepts__configuration__builders__index.html.
+     * https://51degrees.com/documentation/_concepts__configuration__builders__index.html?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-metadataconsole.php&utm_term=run.
      *
      * @param string $resourceKey
      * @param \fiftyone\pipeline\core\Logger $logger

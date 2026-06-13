@@ -66,7 +66,7 @@ class GettingStartedConsole
     {
         // In this example, we use the PipelineBuilder and configure it from a file.
         // For more information about builders in general see the documentation at
-        // http://51degrees.com/documentation/_concepts__configuration__builders__index.html
+        // https://51degrees.com/documentation/_concepts__configuration__builders__index.html?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-gettingstartedconsole.php&utm_term=run
         $pipeline = (new PipelineBuilder())
             ->addLogger($logger)
             ->buildFromConfig($config);
@@ -131,7 +131,7 @@ class GettingStartedConsole
 
         // Display the results of the detection, which are called
         // device properties. See the property dictionary at
-        // https://51degrees.com/developers/property-dictionary
+        // https://51degrees.com/developers/property-dictionary?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-gettingstartedconsole.php&utm_term=analyseevidence
         // for details of all available properties.
         $this->outputValue('Mobile Device', $device->ismobile, $message);
         $this->outputValue('Platform Name', $device->platformname, $message);

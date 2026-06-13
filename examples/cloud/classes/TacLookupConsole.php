@@ -60,7 +60,7 @@ class TacLookupConsole
         // For a demonstration of how to do this in code instead, see the
         // NativeModelLookup example.
         // For more information about builders in general see the documentation at
-        // http://51degrees.com/documentation/_concepts__configuration__builders__index.html
+        // https://51degrees.com/documentation/_concepts__configuration__builders__index.html?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-taclookupconsole.php&utm_term=run
 
         // Create the pipeline using the service provider and the configured options.
         $pipeline = (new PipelineBuilder())
