@@ -23,40 +23,44 @@
 ?>
 <head>
     <title>Web Integration Example</title>
+    <?php use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils; ?>
     <style>
-        <?php 
-        use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils;
-        require(__DIR__."/main.css");
+        <?php
+        // The shared pattern-library stylesheet is vendored next to this file as
+        // examples-main.min.css. The built-in PHP server runs the example script as
+        // the router for every request, so there is no separate static route to link
+        // to. We inline the stylesheet here instead so the page is styled standalone.
+        require(__DIR__ . "/examples-main.min.css");
         ?>
     </style>
 </head>
 
-<div class="main">
-    <h2>Web Integration Example</h2>
+<div class="c-eg-page">
+    <h2 class="c-eg-page__title">Web integration example</h2>
 
-    <p>
+    <p class="c-eg-page__lead">
         This example demonstrates the use of the Pipeline API to perform device detection within a
         simple PHP web project. In particular, it highlights:
-        <ol>
-            <li>
-                Automatic handling of the 'Accept-CH' header, which is used to request User-Agent
-                Client Hints from the browser
-            </li>
-            <li>
-                Client-side evidence collection in order to identify Apple device models and properties
-                such as screen size.
-            </li>
-        </ol>
     </p>
-    <h3>Client Hints</h3>
-    <p>
+    <ol>
+        <li>
+            Automatic handling of the 'Accept-CH' header, which is used to request User-Agent
+            Client Hints from the browser
+        </li>
+        <li>
+            Client-side evidence collection in order to identify Apple device models and properties
+            such as screen size.
+        </li>
+    </ol>
+    <h3 class="c-eg-page__heading">Client Hints</h3>
+    <p class="c-eg-page__lead">
         When the first request is made, browsers that support client hints will typically send a subset
         of client hints values along with the User-Agent header.
         If device detection determines that the browser does support client hints then it will request
         that additional client hints headers are sent with future requests by sending the Accept-CH
         header with the response.
     </p>
-    <p>
+    <p class="c-eg-page__lead">
         Note that if you have visited this page previously, the value of Accept-CH will have been
         cached so all requested client hints headers will be sent on the first request. Using features
         such as 'private browsing' or 'incognito mode' will allow you to see the true first request
@@ -64,7 +68,7 @@
     </p>
 
     <noscript>
-        <div class="example-alert">
+        <div class="c-eg-alert">
             WARNING: JavaScript is disabled in your browser. This means that the callback discussed
             further down this page will not fire and UACH headers will not be sent.
         </div>
@@ -72,95 +76,114 @@
 
     <div id="content">
         <div id="response-headers">
-            <h2>Response headers:</h2>
-            <p class="smaller">The following response headers were set:</p>
-            <table>
-                <tr>
-                    <th>Key</th>
-                    <th>Value</th>
-                </tr>
+            <h3 class="c-eg-page__heading">Response headers</h3>
+            <p class="c-eg-page__lead">The following response headers were set:</p>
+            <table class="c-eg-table">
+                <thead class="c-eg-table__head">
+                    <tr class="c-eg-table__row">
+                        <th class="c-eg-table__cell">Key</th>
+                        <th class="c-eg-table__cell">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
+                    $rowAlt = false;
                     foreach (headers_list() as $header)
                     {
                         $parts = explode(": ", $header);
-                        $output("<tr class='lightyellow'>");
-                        $output("<td><b>".$parts[0]."</b></td>");
-                        $output("<td>".$parts[1]."</td>");
+                        $rowClass = $rowAlt ? "c-eg-table__row c-eg-table__row--alt" : "c-eg-table__row";
+                        $rowAlt = !$rowAlt;
+                        $output("<tr class='".$rowClass."'>");
+                        $output("<td class='c-eg-table__cell c-eg-table__cell--key'>".$parts[0]."</td>");
+                        $output("<td class='c-eg-table__cell'>".$parts[1]."</td>");
+                        $output("</tr>");
                     }
                 ?>
+                </tbody>
             </table>
         </div>
 
         <?php if (ExampleUtils::containsAcceptCh() == false) { ?>
-            <div class="example-alert">
-                WARNING: There is no Accept-CH header in the response. This may indicate that your 
+            <div class="c-eg-alert">
+                WARNING: There is no Accept-CH header in the response. This may indicate that your
                 browser does not support User-Agent Client Hints. This is not necessarily a problem,
                 but if you are wanting to try out detection using User-Agent Client Hints, then make
-                sure that your browser 
+                sure that your browser
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/User-Agent_Client_Hints_API#browser_compatibility">supports them</a>.
             </div>
         <?php } ?>
-        <br />
 
         <div id="evidence">
-            <h2>Evidence Used:</h2>
-            <p class="smaller">Evidence was <span class="lightgreen">used</span> / <span class="lightyellow">present</span> for detection</p>
-            <table>
-                <tr>
-                    <th>Key</th>
-                    <th>Value</th>
-                </tr>
+            <h3 class="c-eg-page__heading">Evidence used</h3>
+            <p class="c-eg-legend">
+                Evidence was
+                <span class="c-eg-legend__swatch c-eg-legend__swatch--used">used</span>
+                /
+                <span class="c-eg-legend__swatch c-eg-legend__swatch--present">present</span>
+                for detection
+            </p>
+            <table class="c-eg-table">
+                <thead class="c-eg-table__head">
+                    <tr class="c-eg-table__row">
+                        <th class="c-eg-table__cell">Key</th>
+                        <th class="c-eg-table__cell">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php
                     foreach ($flowdata->evidence->getAll() as $key => $value)
                     {
                         if ($flowdata->pipeline->getElement("cloud")->getEvidenceKeyFilter()->filterEvidenceKey($key))
                         {
-                            $output("<tr class='lightgreen'>");
+                            $output("<tr class='c-eg-table__row c-eg-table__row--used'>");
                         }
                         else
                         {
-                            $output("<tr class='lightyellow'>");
+                            $output("<tr class='c-eg-table__row c-eg-table__row--present'>");
                         }
-                        $output("<td><b>".$key."</b></td>");
-                        $output("<td>".$value."</td>");
+                        $output("<td class='c-eg-table__cell c-eg-table__cell--key'>".$key."</td>");
+                        $output("<td class='c-eg-table__cell'>".$value."</td>");
                         $output("</tr>");
                     }
                 ?>
+                </tbody>
             </table>
         </div>
-        <br />
 
-        <h2>Device Data</h2>
-        <p class="smaller">
-            The following values are determined by sever-side device detection
+        <h3 class="c-eg-page__heading">Device Data</h3>
+        <p class="c-eg-page__lead">
+            The following values are determined by server-side device detection
             on the first request:
         </p>
-        <table>
-            <tr>
-                <th>Key</th>
-                <th>Value</th>
-            </tr>
-            <tr class="lightyellow"><td><b>Hardware Vendor:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "hardwarevendor")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Hardware Name:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "hardwarename")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Device Type:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "devicetype")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Platform Vendor:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "platformvendor")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Platform Name:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "platformname")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Platform Version:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "platformversion")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Browser Vendor:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browservendor")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Browser Name:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browsername")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Browser Version:</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browserversion")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Screen width (pixels):</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelswidth")); ?></td></tr>
-            <tr class="lightyellow"><td><b>Screen height (pixels):</b></td><td> <?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelsheight")); ?></td></tr>
+        <table class="c-eg-table">
+            <thead class="c-eg-table__head">
+                <tr class="c-eg-table__row">
+                    <th class="c-eg-table__cell">Key</th>
+                    <th class="c-eg-table__cell">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Hardware Vendor:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "hardwarevendor")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Hardware Name:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "hardwarename")); ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Device Type:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "devicetype")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Platform Vendor:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "platformvendor")); ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Platform Name:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "platformname")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Platform Version:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "platformversion")); ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Vendor:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browservendor")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Name:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browsername")); ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Version:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browserversion")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Screen width (pixels):</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelswidth")); ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Screen height (pixels):</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelsheight")); ?></td></tr>
+            </tbody>
         </table>
-        <br />
 
-        <h3>Client-side Evidence and Apple Models</h3>
-        <p>
+        <h3 class="c-eg-page__heading">Client-side Evidence and Apple Models</h3>
+        <p class="c-eg-page__lead">
             The information shown below is determined after a callback is made to the server with
             additional evidence that is gathered by JavaScript running on the client-side.
             The callback will also include any additional client hints headers that have been requested.
         </p>
-        <p>
+        <p class="c-eg-page__lead">
             When an Apple device is used, the results from
             the first request above will show all Apple models because the server cannot tell the
             exact model of the device. In contrast, the results from the callback below will show
@@ -170,19 +193,20 @@
             devices so this can cause some unusual results. Using real devices will generally be more
             successful.
         </p>
-        <p>
+        <p class="c-eg-page__lead">
             If you want to work with Apple Model or other client-side information, such as screen
             width/height on the server, then you will need to ensure that the 'enableCookies' setting
             is set to 'true' as in the pipeline construction for this example.
             This will cause the additional client-side evidence to be saved as cookies on the client.
             When a future page is requested, these cookies will be included with the request and the
             device detection API will include them when working out the details of the device.
-            Refreshing this page can be used to show this in action. Any values that are unique to the 
-            client-side values below will appear in the evidence values used and server-side results 
+            Refreshing this page can be used to show this in action. Any values that are unique to the
+            client-side values below will appear in the evidence values used and server-side results
             after the refresh.
         </p>
     </div>
-<div>
+</div>
+
 <!--
     This script is constructed by the fiftyone\pipeline\core package.
     It adds a JavaScript include for 51Degrees.core.js.
@@ -199,7 +223,8 @@
 
     When the server responds, the JSON representation of the results will be updated with the
     new values and the 'complete' event will fire.
-    Below, we subscribe to this complete event and display the values from the updated JSON.
+    The shared examples.js helper subscribes to this complete event and appends the
+    refined client-side results into #content.
 -->
 <script>
     <?php
@@ -208,55 +233,16 @@
 </script>
 
 <script>
+    <?php
+        // The shared pattern-library helper is vendored next to this file as
+        // examples.min.js. As with the stylesheet, there is no static route to
+        // reference under the built-in PHP server, so we inline it here.
+        $output(file_get_contents(__DIR__ . "/examples.min.js"));
+    ?>
+</script>
+
+<script>
     window.onload = function () {
-        // Subscribe to the 'complete' event.
-        fod.complete(function (data) {
-            // When the event fires, use the supplied data to populate a new table.
-            let fieldValues = [];
-
-            var hardwareName = typeof data.device.hardwarename == "undefined" ?
-                "Unknown" : data.device.hardwarename.join(", ")
-            fieldValues.push(["Hardware Name: ", hardwareName]);
-            fieldValues.push(["Platform: ",
-                data.device.platformname + " " + data.device.platformversion]);
-            fieldValues.push(["Browser: ",
-                data.device.browsername + " " + data.device.browserversion]);
-            fieldValues.push(["Screen width (pixels): ", data.device.screenpixelswidth]);
-            fieldValues.push(["Screen height (pixels): ", data.device.screenpixelsheight]);
-            displayValues(fieldValues);
-        });
-    }
-
-    // Helper function to add a table that displays the supplied values.
-    function displayValues(fieldValues) {
-        var table = document.createElement("table");
-        var tr = document.createElement("tr");
-        addToRow(tr, "th", "Key", false);
-        addToRow(tr, "th", "Value", false);
-        table.appendChild(tr);
-
-        fieldValues.forEach(function (entry) {
-            var tr = document.createElement("tr");
-            tr.classList.add("lightyellow");
-            addToRow(tr, "td", entry[0], true);
-            addToRow(tr, "td", entry[1], false);
-            table.appendChild(tr);
-        });
-
-        var element = document.getElementById("content");
-        element.appendChild(table);
-    }
-
-    // Helper function to add an entry to a table row.
-    function addToRow(row, elementName, text, strong) {
-        var entry = document.createElement(elementName);
-        var textNode = document.createTextNode(text);
-        if (strong === true) {
-            var strongNode = document.createElement("strong");
-            strongNode.appendChild(textNode);
-            textNode = strongNode;
-        }
-        entry.appendChild(textNode);
-        row.appendChild(entry);
-    }
+        fodExamples.bindDeviceCallback({ targetId: "content" });
+    };
 </script>
