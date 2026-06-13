@@ -110,96 +110,136 @@ $device = $flowData->device;
 Utils::setResponseHeader($flowData);
 
 // Generate the HTML
-echo "<h2>User Agent Client Hints Example</h2>";
+?>
+<head>
+    <title>User Agent Client Hints Example</title>
+    <style>
+        <?php
+        // The shared pattern-library stylesheet is vendored under static/ as
+        // examples-main.min.css. This standalone example script serves the whole
+        // response itself, so there is no separate static route to link to. We
+        // inline the stylesheet here instead so the page is styled standalone.
+        require(__DIR__ . "/static/examples-main.min.css");
+        ?>
+    </style>
+</head>
 
-echo "
+<div class="c-eg-page">
+    <h2 class="c-eg-page__title">User Agent Client Hints example</h2>
 
-    <p>
-    By default, the user-agent, sec-ch-ua and sec-ch-ua-mobile HTTP headers
-    are sent.
-    <br />
-    This means that on the first request, the server can determine the
-    browser from sec-ch-ua while other details must be derived from the
-    user-agent.
-    <br />
-    If the server determines that the browser supports client hints, then
-    it may request additional client hints headers by setting the
-    Accept-CH header in the response.
-    <br />
-    Select the <strong>Make second request</strong> button below,
-    to use send another request to the server. This time, any
-    additional client hints headers that have been requested
-    will be included.
+    <p class="c-eg-page__lead">
+        By default, the user-agent, sec-ch-ua and sec-ch-ua-mobile HTTP headers are sent.
+        This means that on the first request, the server can determine the browser from
+        sec-ch-ua while other details must be derived from the user-agent.
+    </p>
+    <p class="c-eg-page__lead">
+        If the server determines that the browser supports client hints, then it may request
+        additional client hints headers by setting the Accept-CH header in the response.
+        Select the <strong>Make second request</strong> button below to send another request
+        to the server. This time, any additional client hints headers that have been requested
+        will be included.
     </p>
 
-<button type='button' onclick='redirect()'>Make second request</button>
+    <div class="c-eg-button-row">
+        <button type="button" class="b-btn" onclick="redirect()">Make second request</button>
+    </div>
 
-<script>
+    <script>
 
-    // This script will run when button will be clicked and device detection request will again 
-    // be sent to the server with all additional client hints that was requested in the previous
-    // response by the server.
-    // Following sequence will be followed.
-    // 1. User will send the first request to the web server for detection.
-    // 2. Web Server will return the properties in response based on the headers sent in the request. Along 
-    // with the properties, it will also send a new header field Accept-CH in response indicating the additional
-    // evidence it needs. It builds the new response header using SetHeader[Component name]Accept-CH properties 
-    // where Component Name is the name of the component for which properties are required.
-    // 3. When \"Make second request\" button will be clicked, device detection request will again 
-    // be sent to the server with all additional client hints that was requested in the previous
-    // response by the server.
-    // 4. Web Server will return the properties based on the new User Agent CLient Hint headers 
-    // being used as evidence.
+        // This script runs when the button is clicked and the device detection request is
+        // sent again to the server with all additional client hints that were requested in the
+        // previous response by the server.
+        // The following sequence is followed.
+        // 1. The user sends the first request to the web server for detection.
+        // 2. The web server returns the properties in the response based on the headers sent in
+        //    the request. Along with the properties, it also sends a new Accept-CH header in the
+        //    response indicating the additional evidence it needs. It builds the new response
+        //    header using SetHeader[Component name]Accept-CH properties, where Component Name is
+        //    the name of the component for which properties are required.
+        // 3. When the "Make second request" button is clicked, the device detection request is
+        //    sent again to the server with all additional client hints that were requested in the
+        //    previous response by the server.
+        // 4. The web server returns the properties based on the new User Agent Client Hint
+        //    headers being used as evidence.
 
-    function redirect() {
-        sessionStorage.reloadAfterPageLoad = true;
-        window.location.reload(true);
+        function redirect() {
+            sessionStorage.reloadAfterPageLoad = true;
+            window.location.reload(true);
         }
 
-    window.onload = function () { 
-        if ( sessionStorage.reloadAfterPageLoad ) {
-        document.getElementById('description').innerHTML = '<p>The information shown below is determined using <strong>User Agent Client Hints</strong> that was sent in the request to obtain additional evidence. If no additional information appears then it may indicate an external problem such as <strong>User Agent Client Hints</strong> being disabled in your browser.</p>';
-        sessionStorage.reloadAfterPageLoad = false;
+        window.onload = function () {
+            if (sessionStorage.reloadAfterPageLoad) {
+                document.getElementById('description').innerHTML = '<p class="c-eg-page__lead">The information shown below is determined using <strong>User Agent Client Hints</strong> that were sent in the request to obtain additional evidence. If no additional information appears then it may indicate an external problem such as <strong>User Agent Client Hints</strong> being disabled in your browser.</p>';
+                sessionStorage.reloadAfterPageLoad = false;
+            } else {
+                document.getElementById('description').innerHTML = '<p class="c-eg-page__lead">The following values are determined by server-side device detection on the first request.</p>';
+            }
         }
-        else{
-        document.getElementById('description').innerHTML = '<p>The following values are determined by sever-side device detection on the first request.</p>';
-        }
-    }
 
-</script>
+    </script>
 
-<div id=\"evidence\">
-    <strong></br>Evidence values used: </strong>
-    <table>
-        <tr>
-            <th>Key</th>
-            <th>Value</th>
-        </tr>";
+    <div id="evidence">
+        <h3 class="c-eg-page__heading">Evidence values used</h3>
+        <p class="c-eg-legend">
+            Evidence was
+            <span class="c-eg-legend__swatch c-eg-legend__swatch--used">used</span>
+            /
+            <span class="c-eg-legend__swatch c-eg-legend__swatch--present">present</span>
+            for detection
+        </p>
+        <table class="c-eg-table">
+            <thead class="c-eg-table__head">
+                <tr class="c-eg-table__row">
+                    <th class="c-eg-table__cell">Key</th>
+                    <th class="c-eg-table__cell">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+                $evidences = $pipeline->getElement("device")->filterEvidence($flowData);
+                foreach ($evidences as $key => $value) {
+                    if (strpos($key, strtolower("header.sec-ch")) !== false
+                        || strpos($key, strtolower("header.user-agent")) !== false) {
+                        echo "<tr class='c-eg-table__row c-eg-table__row--used'>";
+                        echo "<td class='c-eg-table__cell c-eg-table__cell--key'>" . strVal($key) . "</td>";
+                        echo "<td class='c-eg-table__cell'>" . strVal($value) . "</td>";
+                        echo "</tr>";
+                    }
+                }
+            ?>
+            </tbody>
+        </table>
+    </div>
 
-$evidences = $pipeline->getElement("device")->filterEvidence($flowData);
-foreach( $evidences as $key => $value){
-	if(strpos($key, strtolower("header.sec-ch")) !== false 
-	    || strpos($key, strtolower("header.user-agent")) !== false){ 
-           echo"<tr><td>" . strVal($key) . "</td>";
-           echo "<td>" . strVal($value) . "</td></>";
-	}
-}
+    <h3 class="c-eg-page__heading">Detection results</h3>
+    <div id="description"></div>
+    <div id="content">
+        <table class="c-eg-table">
+            <thead class="c-eg-table__head">
+                <tr class="c-eg-table__row">
+                    <th class="c-eg-table__cell">Key</th>
+                    <th class="c-eg-table__cell">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Hardware Vendor:</td><td class="c-eg-table__cell"><?php echo $device->hardwarevendor->hasValue ? $device->hardwarevendor->value : $device->hardwarevendor->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Hardware Name:</td><td class="c-eg-table__cell"><?php echo $device->hardwarename->hasValue ? implode(", ", $device->hardwarename->value) : $device->hardwarename->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Device Type:</td><td class="c-eg-table__cell"><?php echo $device->devicetype->hasValue ? $device->devicetype->value : $device->devicetype->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Platform Vendor:</td><td class="c-eg-table__cell"><?php echo $device->platformvendor->hasValue ? $device->platformvendor->value : $device->platformvendor->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Platform Name:</td><td class="c-eg-table__cell"><?php echo $device->platformname->hasValue ? $device->platformname->value : $device->platformname->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Platform Version:</td><td class="c-eg-table__cell"><?php echo $device->platformversion->hasValue ? $device->platformversion->value : $device->platformversion->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Vendor:</td><td class="c-eg-table__cell"><?php echo $device->browservendor->hasValue ? $device->browservendor->value : $device->browservendor->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Name:</td><td class="c-eg-table__cell"><?php echo $device->browsername->hasValue ? $device->browsername->value : $device->browsername->noValueMessage; ?></td></tr>
+                <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Version:</td><td class="c-eg-table__cell"><?php echo $device->browserversion->hasValue ? $device->browserversion->value : $device->browserversion->noValueMessage; ?></td></tr>
+            </tbody>
+        </table>
+    </div>
 
-echo "</table>";
-echo "</div>";
-
-echo "<div id=description></div>";
-echo "</br><strong>Detection results:</strong></br>";
-echo "<div id=\"content\">";
-echo "<p>\n";
-
-echo "    Hardware Vendor: " . ($device->hardwarevendor->hasValue ? $device->hardwarevendor->value : $device->hardwarevendor->noValueMessage) . "<br />\n";
-echo "    Hardware Name: " . ($device->hardwarename->hasValue ? implode(",", $device->hardwarename->value) : $device->hardwarename->noValueMessage) . "<br />\n";
-echo "    Device Type: " . ($device->devicetype->hasValue ? $device->devicetype->value : $device->devicetype->noValueMessage) . "<br />\n";
-echo "    Platform Vendor: " . ($device->platformvendor->hasValue ? $device->platformvendor->value : $device->platformvendor->noValueMessage) . "<br />\n";
-echo "    Platform Name: " . ($device->platformname->hasValue ? $device->platformname->value : $device->platformname->noValueMessage) . "<br />\n";
-echo "    Platform Version: " . ($device->platformversion->hasValue ? $device->platformversion->value : $device->platformversion->noValueMessage) . "<br />\n";
-echo "    Browser Vendor: " . ($device->browservendor->hasValue ? $device->browservendor->value : $device->browservendor->noValueMessage) . "<br />\n";
-echo "    Browser Name: " . ($device->browsername->hasValue ? $device->browsername->value : $device->browsername->noValueMessage) . "<br />\n";
-echo "    Browser Version: " . ($device->browserversion->hasValue ? $device->browserversion->value : $device->browserversion->noValueMessage) . "<br />\n";
+    <?php
+        echo '<div class="c-eg-message">';
+        echo '  <p class="c-eg-message__text">Want to try on-premise? <a href="https://51degrees.com/contact-us">Contact us</a> to discuss requirements.</p>';
+        echo '  <a class="b-btn c-eg-message__cta" href="https://51degrees.com/contact-us">Contact us</a>';
+        echo '</div>';
+    ?>
+</div>
 
