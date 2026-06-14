@@ -237,8 +237,8 @@ Utils::setResponseHeader($flowData);
 
     <?php
         echo '<div class="c-eg-message">';
-        echo '  <p class="c-eg-message__text">Want to try on-premise? <a href="https://51degrees.com/contact-us">Contact us</a> to discuss requirements.</p>';
-        echo '  <a class="b-btn c-eg-message__cta" href="https://51degrees.com/contact-us">Contact us</a>';
+        echo '  <p class="c-eg-message__text">Want to try on-premise? <a href="https://51degrees.com/contact-us?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-useragentclienthints-web.php&utm_term=try-on-premise">Contact us</a> to discuss requirements.</p>';
+        echo '  <a class="b-btn c-eg-message__cta" href="https://51degrees.com/contact-us?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-useragentclienthints-web.php&utm_term=try-on-premise">Contact us</a>';
         echo '</div>';
     ?>
 </div>
