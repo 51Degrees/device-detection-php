@@ -85,7 +85,11 @@ if (empty($resourceKey)) {
 }
 
 $builder = new DeviceDetectionPipelineBuilder(array(
-    "resourceKey" => $resourceKey
+    "resourceKey" => $resourceKey,
+    // Set to true so that if the underlying cloud service fails during request
+    // processing the pipeline degrades gracefully instead of returning a 500.
+    // Use false while developing to surface mistakes loudly.
+    "suppressProcessExceptions" => true
 ));
 $pipeline = $builder->build();
 

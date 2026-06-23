@@ -97,7 +97,11 @@ class GettingStartedWeb
 
         $builderSettings = [
             'resourceKey' => $resourceKey,
-            'javascriptBuilderSettings' => $javascriptBuilderSettings];
+            'javascriptBuilderSettings' => $javascriptBuilderSettings,
+            // Set to true so that if the underlying cloud service fails during request
+            // processing the pipeline degrades gracefully instead of returning a 500.
+            // Use false while developing to surface mistakes loudly.
+            'suppressProcessExceptions' => true];
         // If a cloud endpoint is set in the environment, point the pipeline at it.
         $cloudEndpoint = ExampleUtils::getCloudEndpoint();
         if ($cloudEndpoint) {
