@@ -263,7 +263,7 @@ class DeviceDetectionTests extends TestCase
         } catch (\Exception $e) {
             $exception = true;
 
-            $expectedMessage = "This Resource Key is not authorized for use with this domain: '" . $origin . "'.";
+            $expectedMessage = "This resource key is not authorised for the domain '" . $origin . "'.";
 
             $this->assertStringContainsString(
                 $expectedMessage,
