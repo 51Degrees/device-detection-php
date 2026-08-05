@@ -71,6 +71,10 @@ class ExampleWebTests extends TestCase
         $responseHeaders = self::parseHeaders($http_response_header);
 
         $this->assertSame(200, $responseHeaders['response_code']);
+        // The device id is rendered into the page from the server-side results.
+        // An id of all zeros means nothing was matched, so check for a real one.
+        $this->assertSame(1, preg_match('/[0-9]+-[0-9]+-[0-9]+-[0-9]+/', $data, $deviceId));
+        $this->assertNotSame('0-0-0-0', $deviceId[0]);
     }
 
     /**

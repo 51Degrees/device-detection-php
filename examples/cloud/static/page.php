@@ -174,6 +174,7 @@
                 <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Version:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browserversion")); ?></td></tr>
                 <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Screen width (pixels):</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelswidth")); ?></td></tr>
                 <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Screen height (pixels):</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelsheight")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Device Id:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "deviceid")); ?></td></tr>
             </tbody>
         </table>
 
