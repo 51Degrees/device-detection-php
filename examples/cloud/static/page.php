@@ -213,8 +213,8 @@
 </div>
 
 <!--
-    This script is constructed by the fiftyone\pipeline\core package.
-    It adds a JavaScript include for 51Degrees.core.js.
+    51Degrees.core.js is served by this example from the same script that renders
+    this page, see GettingStartedWeb::processRequest.
     The 51Degrees pipeline will dynamically generate JavaScript, which includes a
     JSON representation of the contents of flow data.
     i.e. The results from device detection.
@@ -231,11 +231,7 @@
     The shared examples.js helper subscribes to this complete event and appends the
     refined client-side results into #content.
 -->
-<script>
-    <?php
-        $output($flowdata->javascriptbuilder->javascript);
-    ?>
-</script>
+<script src="/51Degrees.core.js"></script>
 
 <script>
     <?php

@@ -74,6 +74,33 @@ class ExampleWebTests extends TestCase
     }
 
     /**
+     * The page references the client-side script with a script tag, so the
+     * example must serve the JavaScript built by the pipeline at that path
+     * rather than falling through to the HTML page.
+     */
+    public function testClientSideJavaScript()
+    {
+        $requestHeaders = Constants::UA_HEADER . Constants::CHROME_UA . '\r\n';
+
+        $context = stream_context_create([
+            'http' => [
+                'method' => 'GET',
+                'header' => $requestHeaders
+            ]
+        ]);
+
+        $data = @file_get_contents(Constants::URL . '51Degrees.core.js', false, $context);
+        $responseHeaders = self::parseHeaders($http_response_header);
+
+        $this->assertSame(200, $responseHeaders['response_code']);
+        $this->assertStringStartsWith('application/x-javascript', $responseHeaders['Content-Type']);
+        // The generated script declares the object used to access the results on
+        // the client side. The HTML page is not returned, so has no head element.
+        $this->assertStringContainsString('window.fod', $data);
+        $this->assertStringNotContainsString('<head', $data);
+    }
+
+    /**
      * Converts response headers string to an indexed array.
      *
      * @param array $headers
