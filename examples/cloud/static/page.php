@@ -174,6 +174,7 @@
                 <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Browser Version:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "browserversion")); ?></td></tr>
                 <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Screen width (pixels):</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelswidth")); ?></td></tr>
                 <tr class="c-eg-table__row c-eg-table__row--alt"><td class="c-eg-table__cell c-eg-table__cell--key">Screen height (pixels):</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "screenpixelsheight")); ?></td></tr>
+                <tr class="c-eg-table__row"><td class="c-eg-table__cell c-eg-table__cell--key">Device Id:</td><td class="c-eg-table__cell"><?php $output(ExampleUtils::getHumanReadable($flowdata->device, "deviceid")); ?></td></tr>
             </tbody>
         </table>
 
@@ -213,8 +214,8 @@
 </div>
 
 <!--
-    This script is constructed by the fiftyone\pipeline\core package.
-    It adds a JavaScript include for 51Degrees.core.js.
+    51Degrees.core.js is served by this example from the same script that renders
+    this page, see GettingStartedWeb::processRequest.
     The 51Degrees pipeline will dynamically generate JavaScript, which includes a
     JSON representation of the contents of flow data.
     i.e. The results from device detection.
@@ -231,11 +232,7 @@
     The shared examples.js helper subscribes to this complete event and appends the
     refined client-side results into #content.
 -->
-<script>
-    <?php
-        $output($flowdata->javascriptbuilder->javascript);
-    ?>
-</script>
+<script src="/51Degrees.core.js"></script>
 
 <script>
     <?php

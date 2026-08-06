@@ -71,6 +71,37 @@ class ExampleWebTests extends TestCase
         $responseHeaders = self::parseHeaders($http_response_header);
 
         $this->assertSame(200, $responseHeaders['response_code']);
+        // The device id is rendered into the page from the server-side results.
+        // An id of all zeros means nothing was matched, so check for a real one.
+        $this->assertSame(1, preg_match('/[0-9]+-[0-9]+-[0-9]+-[0-9]+/', $data, $deviceId));
+        $this->assertNotSame('0-0-0-0', $deviceId[0]);
+    }
+
+    /**
+     * The page references the client-side script with a script tag, so the
+     * example must serve the JavaScript built by the pipeline at that path
+     * rather than falling through to the HTML page.
+     */
+    public function testClientSideJavaScript()
+    {
+        $requestHeaders = Constants::UA_HEADER . Constants::CHROME_UA . '\r\n';
+
+        $context = stream_context_create([
+            'http' => [
+                'method' => 'GET',
+                'header' => $requestHeaders
+            ]
+        ]);
+
+        $data = @file_get_contents(Constants::URL . '51Degrees.core.js', false, $context);
+        $responseHeaders = self::parseHeaders($http_response_header);
+
+        $this->assertSame(200, $responseHeaders['response_code']);
+        $this->assertStringStartsWith('application/x-javascript', $responseHeaders['Content-Type']);
+        // The generated script declares the object used to access the results on
+        // the client side. The HTML page is not returned, so has no head element.
+        $this->assertStringContainsString('window.fod', $data);
+        $this->assertStringNotContainsString('<head', $data);
     }
 
     /**

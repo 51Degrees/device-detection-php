@@ -143,10 +143,26 @@ class GettingStartedWeb
         // https://51degrees.com/blog/user-agent-client-hints?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-gettingstartedweb.php&utm_term=processrequest
         Utils::setResponseHeader($flowdata);
 
-        // First we make a JSON route that will be called from the client side
+        // The .NET and Java APIs have web integration packages which intercept
+        // requests for the pipeline resources. There is no equivalent for PHP, and
+        // the built-in PHP server routes every request to this single script, so
+        // the example dispatches on the request path itself.
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+        // Serve the client-side JavaScript built by the JavaScriptBuilder element.
+        // The path matches the one used by the .NET, Java and Rust examples so that
+        // the page can reference the script by name instead of inlining it.
+        if ($path === '/51Degrees.core.js') {
+            header('Content-Type: application/x-javascript');
+            $output($flowdata->javascriptbuilder->javascript);
+
+            return;
+        }
+
+        // Next we make a JSON route that will be called from the client side
         // and will return a JSON encoded property database using any additional
         // evidence provided by the client.
-        if (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === '/json') {
+        if ($path === '/json') {
             header('Content-Type: application/json');
             $output(json_encode($flowdata->jsonbundler->json));
 
