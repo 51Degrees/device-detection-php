@@ -26,6 +26,7 @@ namespace fiftyone\pipeline\devicedetection\tests;
 use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils;
 use fiftyone\pipeline\devicedetection\tests\classes\Constants;
 use fiftyone\pipeline\devicedetection\tests\classes\Process;
+use fiftyone\pipeline\devicedetection\tests\classes\ResourceKeys;
 use PHPUnit\Framework\TestCase;
 
 /**
