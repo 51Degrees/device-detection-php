@@ -29,6 +29,8 @@ $_SERVER['REMOTE_ADDR'] = '0.0.0.0';
 
 use fiftyone\pipeline\devicedetection\DeviceDetectionPipelineBuilder;
 use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils;
+use fiftyone\pipeline\devicedetection\tests\classes\Constants;
+use fiftyone\pipeline\devicedetection\tests\classes\ResourceKeys;
 use PHPUnit\Framework\TestCase;
 
 class DeviceDetectionTests extends TestCase
@@ -277,22 +279,52 @@ class DeviceDetectionTests extends TestCase
 
     public function testFailureToMatch()
     {
-        ob_start(); // hide output
-        include __DIR__ . '/../examples/cloud/failureToMatch.php';
-        ob_end_clean(); // discard output
+        // The example reads the key from the environment itself, so make
+        // sure one is there before running it.
+        $this->getResourceKey();
 
-        $this->assertTrue(true);
+        ob_start();
+
+        try {
+            include __DIR__ . '/../examples/cloud/failureToMatch.php';
+        } finally {
+            $output = ob_get_clean();
+        }
+
+        // The example asks two questions, one about a User-Agent it can
+        // match and one about a User-Agent it cannot. Both answers have to
+        // appear, otherwise the example stopped part way through.
+        $this->assertStringContainsString(
+            'represent a mobile device?',
+            $output,
+            "The failure to match example printed nothing useful:\n" . $output
+        );
+        $this->assertStringContainsString(
+            'xyfga',
+            $output,
+            'The example did not reach the unmatchable User-Agent'
+        );
+        $this->assertStringContainsString(
+            'cannot be mapped to any known device',
+            $output,
+            "The example did not explain the failure to match:\n" . $output
+        );
+
+        foreach (['Fatal error', 'Warning:', 'Undefined'] as $marker) {
+            $this->assertStringNotContainsString(
+                $marker,
+                $output,
+                "The example output contains '{$marker}':\n" . $output
+            );
+        }
     }
 
     private function getResourceKey()
     {
-        $resourceKey = $_ENV[ExampleUtils::RESOURCE_KEY_ENV_VAR];
+        $resourceKey = ResourceKeys::find(Constants::RESOURCE_ENV_VAR);
 
-        if ($resourceKey === '!!YOUR_RESOURCE_KEY!!') {
-            $this->fail('You need to create a resource key at ' .
-            'https://configure.51degrees.com and paste it into the ' .
-            'phpunit.xml config file, ' .
-            'replacing !!YOUR_RESOURCE_KEY!!.');
+        if ($resourceKey === null) {
+            $this->fail(ResourceKeys::missingMessage(Constants::RESOURCE_ENV_VAR));
         }
 
         return $resourceKey;

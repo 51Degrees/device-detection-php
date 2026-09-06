@@ -1,13 +1,23 @@
 <phpunit bootstrap="vendor/autoload.php">
   <php>
-    <env name="resource_key" value="!!YOUR_RESOURCE_KEY!!"/>
+    <!-- Resource key variables follow the 51Degrees convention, which is
+         that every one of them starts with '_51DEGREES_RESOURCE_KEY'. The
+         values here are placeholders. Real keys come from the environment,
+         which PHPUnit does not overwrite. -->
+    <env name="_51DEGREES_RESOURCE_KEY" value="!!YOUR_RESOURCE_KEY!!"/>
     <env name="FOD_CLOUD_API_URL" value=""/>
-    <env name="AcceptChPlatformKey" value="!!YOUR_RESOURCE_KEY!!"/>
-    <env name="AcceptChHardwareKey" value="!!YOUR_RESOURCE_KEY!!"/>
-    <env name="AcceptChBrowserKey" value="!!YOUR_RESOURCE_KEY!!"/>
-    <env name="AcceptChNoneKey" value="!!YOUR_RESOURCE_KEY!!"/>
+    <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_PLATFORM" value="!!YOUR_RESOURCE_KEY!!"/>
+    <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_HARDWARE" value="!!YOUR_RESOURCE_KEY!!"/>
+    <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_BROWSER" value="!!YOUR_RESOURCE_KEY!!"/>
+    <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_NONE" value="!!YOUR_RESOURCE_KEY!!"/>
   </php>
   <testsuites>
+    <!-- The unit suite runs against fixed cloud responses, so it needs no
+         resource key and no network connection. It runs on every build,
+         which is what makes a broken example show as red. -->
+    <testsuite name="Unit">
+      <file>tests/HardwareProfileCloudTest.php</file>
+    </testsuite>
     <testsuite name="Integration">
       <file>tests/ExampleTests.php</file>
       <file>tests/DeviceDetectionTests.php</file>

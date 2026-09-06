@@ -88,7 +88,15 @@ class TacLookupConsole
         // The 'hardware.profiles' object contains one or more devices.
         // This is the same interface used for standard device detection, so we have
         // access to all the same properties.
-        foreach ($result->profiles as $profile) {
+        $profiles = ExampleUtils::getProfiles($result);
+
+        if (count($profiles) === 0) {
+            $output(ExampleUtils::getNoProfilesMessage());
+
+            return;
+        }
+
+        foreach ($profiles as $profile) {
             $vendor = ExampleUtils::getHumanReadable($profile, 'hardwarevendor');
             $name = ExampleUtils::getHumanReadable($profile, 'hardwarename');
             $model = ExampleUtils::getHumanReadable($profile, 'hardwaremodel');

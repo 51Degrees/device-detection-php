@@ -31,7 +31,7 @@ jobs:
       dryrun: ${{ inputs.dryrun || false }}
     secrets:
       token: ${{ secrets.ACCESS_TOKEN }}
-      TestResourceKey: ${{ secrets.SUPER_RESOURCE_KEY }}
+      TestResourceKey: ${{ secrets._51DEGREES_RESOURCE_KEY_SUPER || secrets.SUPER_RESOURCE_KEY }}
       DeviceDetection: ${{ secrets.DEVICE_DETECTION_KEY }}
       CsvUrl: ${{ secrets.CSV_URL }}
 
@@ -46,6 +46,6 @@ jobs:
       dryrun: ${{ inputs.dryrun || false }}
     secrets:
       token: ${{ secrets.ACCESS_TOKEN }}
-      TestResourceKey: ${{ secrets.SUPER_RESOURCE_KEY }}
+      TestResourceKey: ${{ secrets._51DEGREES_RESOURCE_KEY_SUPER || secrets.SUPER_RESOURCE_KEY }}
       DeviceDetection: ${{ secrets.DEVICE_DETECTION_KEY }}
       CsvUrl: ${{ secrets.CSV_URL }}

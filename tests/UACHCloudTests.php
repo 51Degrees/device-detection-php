@@ -26,6 +26,7 @@ namespace fiftyone\pipeline\devicedetection\tests;
 use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils;
 use fiftyone\pipeline\devicedetection\tests\classes\Constants;
 use fiftyone\pipeline\devicedetection\tests\classes\Process;
+use fiftyone\pipeline\devicedetection\tests\classes\ResourceKeys;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -119,7 +120,7 @@ class UACHCloudTests extends TestCase
             ]
         ]);
 
-        $data = @file_get_contents(Constants::URL . '?' . ExampleUtils::RESOURCE_KEY_ENV_VAR . '=' . $resourceKey, false, $context);
+        $data = @file_get_contents(Constants::URL . '?' . ExampleUtils::RESOURCE_KEY_QUERY_PARAM . '=' . $resourceKey, false, $context);
         $responseHeaders = self::parseHeaders($http_response_header);
 
         $this->assertSame(200, $responseHeaders['response_code']);
@@ -147,10 +148,10 @@ class UACHCloudTests extends TestCase
      */
     private static function getEnvVar($name)
     {
-        $resourceKey = getenv($name);
+        $resourceKey = ResourceKeys::find($name);
 
-        if (empty($resourceKey)) {
-            throw new \Exception('Environment variable ' . $name . ' needs to be set to run Cloud tests.');
+        if ($resourceKey === null) {
+            throw new \Exception(ResourceKeys::missingMessage($name));
         }
 
         return $resourceKey;
