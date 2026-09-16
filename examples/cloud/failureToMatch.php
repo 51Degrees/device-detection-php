@@ -87,18 +87,14 @@ $builder = new DeviceDetectionPipelineBuilder(array(
 // Next we build the pipeline. We could additionally add extra engines and/or
 // flowElements here before building.
 
-// To stop having to construct the pipeline
-// and re-make cloud API requests used during construction on every page load,
-// we recommend caching the serialized pipeline to a database or disk.
-// Below we are using PHP's serialize and writing to a file if it doesn't exist
+// A site keeps the pipeline for the life of the process, or serializes it,
+// so that the cloud requests made while it is built are not made on every
+// page load. Anything kept that way has to be thrown away when the resource
+// key changes, because a pipeline carries the properties of the key it was
+// built with. This example builds it on every run, so the answer always
+// belongs to the key the example was given.
 
-$serializedPipelineFile = __DIR__ . "failure_to_match_pipeline.pipeline";
-if(!file_exists($serializedPipelineFile)){
-    $pipeline = $builder->build();
-    file_put_contents($serializedPipelineFile, serialize($pipeline));
-} else {
-    $pipeline = unserialize(file_get_contents($serializedPipelineFile));
-}
+$pipeline = $builder->build();
 
 // Here we create a function that checks if a supplied User-Agent is a
 // mobile device
