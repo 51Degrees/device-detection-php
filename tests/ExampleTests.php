@@ -174,6 +174,89 @@ class ExampleTests extends TestCase
         }
     }
 
+    /**
+     * The failure to match example is a script rather than a class, so it
+     * is run as its own process.
+     *
+     * It used to keep the pipeline it built in a file beside the examples
+     * and reuse it on the next run, so a run with one resource key answered
+     * with the properties of whichever key had run first. The file name was
+     * also built without a separator, so it landed outside the folder the
+     * example lives in. The example builds its pipeline on every run now,
+     * and this checks that it answers and leaves nothing behind.
+     */
+    public function testFailureToMatchLeavesNoPipelineBehind()
+    {
+        $key = $this->getResourceKey();
+        $examples = __DIR__ . '/../examples';
+
+        foreach ($this->pipelineFilesUnder($examples) as $stale) {
+            unlink($stale);
+        }
+
+        $output = $this->runScript(
+            $examples . '/cloud/failureToMatch.php',
+            $key
+        );
+
+        $this->assertStringContainsString(
+            'represent a mobile device',
+            $output
+        );
+
+        $this->assertSame(
+            [],
+            $this->pipelineFilesUnder($examples),
+            'The example left a serialized pipeline behind, and the next run '
+            . 'would answer from whatever resource key wrote it'
+        );
+    }
+
+    /**
+     * Runs a PHP script with the resource key in its environment and
+     * returns everything it wrote.
+     */
+    private function runScript(string $script, string $key): string
+    {
+        $environment = getenv();
+        $environment[Constants::RESOURCE_ENV_VAR] = $key;
+
+        $process = proc_open(
+            [PHP_BINARY, $script],
+            [1 => ['pipe', 'w'], 2 => ['pipe', 'w']],
+            $pipes,
+            null,
+            $environment
+        );
+        $this->assertIsResource($process, 'Could not start ' . $script);
+
+        $output = stream_get_contents($pipes[1])
+            . stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+        proc_close($process);
+
+        return $output;
+    }
+
+    /**
+     * Every serialized pipeline file in the examples folder, in the folders
+     * below it, and beside it, because a name built without a separator
+     * lands beside the folder rather than in it.
+     *
+     * @return string[]
+     */
+    private function pipelineFilesUnder(string $folder): array
+    {
+        $found = array_merge(
+            (array) glob($folder . '/*.pipeline'),
+            (array) glob($folder . '/*/*.pipeline'),
+            (array) glob(dirname($folder) . '/*.pipeline')
+        );
+
+        return array_values(array_filter($found, 'is_file'));
+    }
+
     private function getResourceKey()
     {
         $resourceKey = ResourceKeys::find(Constants::RESOURCE_ENV_VAR);
