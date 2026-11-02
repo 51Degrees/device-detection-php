@@ -201,7 +201,7 @@ class ExampleUtils
     {
         return "\tNo device profiles were returned. The current resource " .
             'key does not include the hardware properties this example ' .
-            'needs. See https://51degrees.com/pricing?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=examples-cloud-classes-exampleutils.php&utm_term=no-profiles';
+            'needs. See https://51degrees.com/pricing?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-classes-exampleutils.php&utm_term=no-profiles';
     }
 
     /**

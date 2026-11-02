@@ -78,7 +78,7 @@ class ResourceKeys
         }
 
         return $message . '. Create a resource key for free at ' .
-            'https://configure.51degrees.com?utm_source=code&utm_medium=example&utm_campaign=device-detection-php&utm_content=tests-classes-resourcekeys.php&utm_term=resource-key-required';
+            'https://configure.51degrees.com?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=tests-classes-resourcekeys.php&utm_term=resource-key-required';
     }
 
     /**
