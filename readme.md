@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This package is developed in the monorepo https://github.com/51Degrees/51degrees-php, under `device-detection/cloud/`. The repository `device-detection-php` is now the read-only Packagist mirror of `51degrees/fiftyone.devicedetection`, published from the monorepo from version 4.5.203. Please refer to the monorepo for issues and PRs.
+
 # 51Degrees PHP Device Detection
 
 ![51Degrees](https://51degrees.com/img/logo.png?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=51degrees-php-device-detection "Data rewards the curious") **PHP Device Detection**
