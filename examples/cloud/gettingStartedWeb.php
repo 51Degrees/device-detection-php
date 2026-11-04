@@ -100,7 +100,7 @@ function main()
             ExampleUtils::RESOURCE_KEY_ENV_VAR . "'." . PHP_EOL .
             "The 51Degrees cloud service is accessed using a 'ResourceKey'. " .
             "For more detail see " .
-            "https://51degrees.com/documentation/_info__resource_keys.html?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-gettingstartedweb.php&utm_term=resource-key-required. " .
+            "https://51degrees.com/documentation/_services__cloud__resource_keys.html?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-gettingstartedweb.php&utm_term=resource-key-required. " .
             "A resource key with the properties required by this " .
             "example can be created for free at " .
             "https://configure.51degrees.com/g3gMZdPY?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-gettingstartedweb.php&utm_term=resource-key-required. " .

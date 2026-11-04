@@ -3,9 +3,9 @@
 
 # 51Degrees PHP Device Detection
 
-![51Degrees](https://51degrees.com/img/logo.png?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=51degrees-php-device-detection "Data rewards the curious") **PHP Device Detection**
+![51Degrees](https://51degrees.com/img/logo.png?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=51degrees-php-device-detection "Data rewards the curious") **PHP Device Detection**
 
-[Developer Documentation](https://51degrees.com/device-detection-php/index.html?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=51degrees-php-device-detection "developer documentation")
+[Developer Documentation](https://51degrees.com/device-detection-php/index.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=51degrees-php-device-detection "developer documentation")
 
 ## Introduction
 This project contains the source code for the PHP implementation of 51Degrees' 
@@ -14,14 +14,14 @@ cloud-based device detection engine for use with the
 
 ## Dependencies
 
-The [tested versions](https://51degrees.com/documentation/_info__tested_versions.html?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=dependencies) page shows 
+The [tested versions](https://51degrees.com/documentation/_product_summaries__tested_versions.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=dependencies) page shows 
 the PHP versions that we currently test against. The software may run fine against other 
 versions, but additional caution should be applied.
 
-You will require a [resource key](https://51degrees.com/documentation/_info__resource_keys.html?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=dependencies)
+You will require a [resource key](https://51degrees.com/documentation/_services__cloud__resource_keys.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=dependencies)
 to use the Cloud API. You can create resource keys using our 
-[configurator](https://configure.51degrees.com/?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=dependencies), see our 
-[documentation](https://51degrees.com/documentation/_concepts__configurator.html?utm_source=github&utm_medium=readme&utm_campaign=51degrees-php&utm_content=readme.md&utm_term=dependencies) on how to use this.
+[configurator](https://configure.51degrees.com/?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=dependencies), see our 
+[documentation](https://51degrees.com/documentation/_services__configurator.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=dependencies) on how to use this.
 
 ## Examples
 
@@ -114,3 +114,11 @@ then the dependency changed to:
 ```
 "51degrees/fiftyone.pipeline.core": "*"
 ```
+
+## Find out more
+
+- [Device Detection](https://51degrees.com/device-detection?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=find-out-more-device-detection)
+- [Device Detection documentation](https://51degrees.com/documentation/_device_detection__index.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=find-out-more-documentation)
+- [Getting started](https://51degrees.com/documentation/_device_detection__quickstart.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=find-out-more-getting-started)
+- [Pricing](https://51degrees.com/pricing?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=find-out-more-pricing)
+- https://github.com/51Degrees/51degrees-php

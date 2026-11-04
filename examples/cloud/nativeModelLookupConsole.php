@@ -68,7 +68,7 @@ if (basename(__FILE__) == basename($_SERVER["SCRIPT_FILENAME"]))
                 ExampleUtils::RESOURCE_KEY_ENV_VAR . "'." . PHP_EOL .
                 "The 51Degrees cloud service is accessed using a 'ResourceKey'. " .
                 "For more information " .
-                "see https://51degrees.com/documentation/_info__resource_keys.html?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-nativemodellookupconsole.php&utm_term=resource-key-required. " .
+                "see https://51degrees.com/documentation/_services__cloud__resource_keys.html?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-nativemodellookupconsole.php&utm_term=resource-key-required. " .
                 "Native model lookup is not available as a free service. This means that " .
                 "you will first need a license key, which can be purchased from our " .
                 "pricing page: https://51degrees.com/pricing?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-nativemodellookupconsole.php&utm_term=resource-key-required. Once this is done, a resource " .

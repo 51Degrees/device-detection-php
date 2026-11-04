@@ -25,6 +25,12 @@
     ],
     "license": "EUPL-1.2",
     "type": "library",
+    "homepage": "https://51degrees.com/device-detection?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=homepage",
+    "support":
+    {
+        "source": "https://github.com/51Degrees/51degrees-php",
+        "docs": "https://51degrees.com/documentation/_device_detection__index.html?utm_source=packagist&utm_medium=package&utm_campaign=51degrees-php&utm_content=fiftyone.devicedetection&utm_term=documentation"
+    },
     "require":
     {
         "php": ">=7.4",

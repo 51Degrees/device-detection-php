@@ -66,7 +66,7 @@ class GettingStartedConsole
     {
         // In this example, we use the PipelineBuilder and configure it from a file.
         // For more information about builders in general see the documentation at
-        // https://51degrees.com/documentation/_concepts__configuration__builders__index.html?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-classes-gettingstartedconsole.php&utm_term=run
+        // https://51degrees.com/documentation/_pipeline_api__concepts__configuration__builders__index.html?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-classes-gettingstartedconsole.php&utm_term=run
         $pipeline = (new PipelineBuilder())
             ->addLogger($logger)
             ->buildFromConfig($config);
