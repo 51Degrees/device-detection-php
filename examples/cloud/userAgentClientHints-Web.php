@@ -29,7 +29,7 @@
  * This example shows how a simple device detection pipeline can be built
  * that checks if a provided User-Agent is a mobile device
  *
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/master/examples/cloud/userAgentClientHints-Web.php).
+ * This example is available in full on [GitHub](https://github.com/51Degrees/51degrees-php/blob/main/device-detection/cloud/examples/cloud/userAgentClientHints-Web.php).
  *
  * To run this example, you will need to create a **resource key**.
  * The resource key is used as short-hand to store the particular set of

@@ -28,7 +28,7 @@
  * that meaningful values * are returned when checking properties
  * returned from the device detection engine.
  *
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/master/examples/cloud/failureToMatch.php).
+ * This example is available in full on [GitHub](https://github.com/51Degrees/51degrees-php/blob/main/device-detection/cloud/examples/cloud/failureToMatch.php).
  *
  * To run this example, you will need to create a **resource key**.
  * The resource key is used as short-hand to store the particular set of

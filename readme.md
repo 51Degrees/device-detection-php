@@ -10,7 +10,7 @@
 ## Introduction
 This project contains the source code for the PHP implementation of 51Degrees' 
 cloud-based device detection engine for use with the 
-[Pipeline API](https://github.com/51Degrees/pipeline-php-core).
+[Pipeline API](https://github.com/51Degrees/51degrees-php/tree/main/pipeline/core).
 
 ## Dependencies
 
@@ -87,7 +87,7 @@ The on-premise implementation of device detection is much faster but requires mo
 memory and processing power than the cloud version. Unfortunately, distributing the 
 on-premise package via composer would require the inclusion of binary executables (.so/.dll) 
 that are not permitted. If you wish to use the on-premise version then you will need to clone 
-the [on-premise repository](https://github.com/51Degrees/device-detection-php-onpremise) and
+the [on-premise repository](https://github.com/51Degrees/51degrees-php/tree/main/device-detection/onpremise) and
 follow the instructions in the readme to build the required modules. This is
 a fairly involved process so feel free to [contact us](mailto:support@51degrees.com) 
 if you are having difficulties.

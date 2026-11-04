@@ -39,7 +39,7 @@
  * cloud. If you are only using a single product (for example - device detection) then not all
  * of these keys will be relevant.
  * 
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/main/examples/cloud/metadataConsole.php). 
+ * This example is available in full on [GitHub](https://github.com/51Degrees/51degrees-php/blob/main/device-detection/cloud/examples/cloud/metadataConsole.php). 
  * 
  * @include{doc} example-require-resourcekey.txt
  * 

@@ -28,7 +28,7 @@
  * based on a given 'TAC'. More background information on TACs can be found through various online
  * sources such as <a href="https://en.wikipedia.org/wiki/Type_Allocation_Code">Wikipedia</a>.
  *
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/master/examples/cloud/tacLookupConsole.php).
+ * This example is available in full on [GitHub](https://github.com/51Degrees/51degrees-php/blob/main/device-detection/cloud/examples/cloud/tacLookupConsole.php).
  *
  * @include{doc} example-require-resourcekey.txt
  *

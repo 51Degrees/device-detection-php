@@ -26,7 +26,7 @@
  *
  * @include{doc} example-getting-started-cloud.txt
  *
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/master/examples/cloud/gettingStartedConsole.php).
+ * This example is available in full on [GitHub](https://github.com/51Degrees/51degrees-php/blob/main/device-detection/cloud/examples/cloud/gettingStartedConsole.php).
  *
  * @include{doc} example-require-resourcekey.txt
  *

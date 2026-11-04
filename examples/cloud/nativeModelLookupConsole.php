@@ -31,7 +31,7 @@
  * [Android devices](https://developer.android.com/reference/android/os/Build#MODEL) and 
  * [iOS devices](https://gist.github.com/soapyigu/c99e1f45553070726f14c1bb0a54053b#file-machinename-swift)
  * 
- * This example is available in full on [GitHub](https://github.com/51Degrees/device-detection-php/blob/master/examples/cloud/nativeModelLookupConsole.php). 
+ * This example is available in full on [GitHub](https://github.com/51Degrees/51degrees-php/blob/main/device-detection/cloud/examples/cloud/nativeModelLookupConsole.php). 
  * 
  * @include{doc} example-require-resourcekey.txt
  *
