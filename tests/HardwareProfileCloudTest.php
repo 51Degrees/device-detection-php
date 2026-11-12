@@ -25,6 +25,7 @@ declare(strict_types=1);
 
 namespace fiftyone\pipeline\devicedetection\tests;
 
+use fiftyone\pipeline\core\Logger;
 use fiftyone\pipeline\core\PipelineBuilder;
 use fiftyone\pipeline\devicedetection\examples\cloud\classes\ExampleUtils;
 use fiftyone\pipeline\devicedetection\HardwareProfileCloud;
@@ -154,6 +155,64 @@ class HardwareProfileCloudTest extends TestCase
 
         $this->assertStringContainsString('screenpixelswidth', $message);
         $this->assertStringStartsWith('Unknown (', $message);
+    }
+
+    public function testLogsAMissingHardwareProductOnceAtWarningLevel()
+    {
+        $logged = $this->logs([], 3);
+
+        $this->assertCount(1, $logged);
+        $this->assertSame('warning', $logged[0]['level']);
+        $this->assertStringContainsString('hardware', $logged[0]['message']);
+    }
+
+    public function testLogsNothingWhenTheHardwareProductIsPresent()
+    {
+        $logged = $this->logs([
+            'hardware' => [
+                'profiles' => ['name' => 'Profiles', 'type' => 'array']
+            ]
+        ], 1);
+
+        $this->assertSame([], $logged);
+    }
+
+    /**
+     * Process the entitled response the given number of times, with the
+     * given products discovered, and return what was logged.
+     *
+     * @param array<string, array<string, mixed>> $products
+     * @return array<array<string, string>>
+     */
+    private function logs(array $products, int $requests): array
+    {
+        $logger = new class ('trace', []) extends Logger {
+            /**
+             * @var array<array<string, string>>
+             */
+            public array $logged = [];
+
+            public function logInternal(array $log): void
+            {
+                $this->logged[] = $log;
+            }
+        };
+        $cloud = new FakeCloudRequestEngine(self::ENTITLED_RESPONSE);
+        $cloud->flowElementProperties = $products;
+        $pipeline = (new PipelineBuilder([
+            'addJavaScriptBuilder' => false,
+            'useSetHeaderProperties' => false,
+        ]))
+            ->addLogger($logger)
+            ->add($cloud)
+            ->add(new HardwareProfileCloud())
+            ->build();
+
+        for ($request = 0; $request < $requests; $request++) {
+            $pipeline->createFlowData()->process();
+        }
+
+        return $logger->logged;
     }
 
     /**

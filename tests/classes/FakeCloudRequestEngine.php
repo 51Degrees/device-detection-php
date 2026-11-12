@@ -41,8 +41,9 @@ class FakeCloudRequestEngine extends FlowElement
 
     /**
      * The properties the real cloud request engine would have discovered
-     * from the accessibleproperties endpoint. The engines under test read
-     * this when it is populated, so an empty list is enough here.
+     * from the accessibleproperties endpoint, by product. An empty list
+     * means no product was found, so an engine logs its product as missing
+     * once and still processes the response.
      *
      * @var array<string, array<string, mixed>>
      */

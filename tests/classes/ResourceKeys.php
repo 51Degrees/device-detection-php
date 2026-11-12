@@ -25,13 +25,15 @@ declare(strict_types=1);
 
 namespace fiftyone\pipeline\devicedetection\tests\classes;
 
+use fiftyone\pipeline\devicedetection\examples\cloud\classes\EnvironmentVariable;
+
 /**
  * Finds the resource key a test needs in the environment.
  *
- * The aligned name is tried first, then the name this repository used
- * before the convention was adopted, so an existing setup keeps working.
- * When neither is set the message names the variable that was wanted,
- * rather than leaving the reader to guess.
+ * A key is read from its variable and, when that is not set, from the
+ * deprecated name the variable replaced. When neither is set the message
+ * names the variable that was wanted, rather than leaving the reader to
+ * guess.
  */
 class ResourceKeys
 {
@@ -46,19 +48,13 @@ class ResourceKeys
      */
     public static function find(string $name): ?string
     {
-        foreach (self::namesFor($name) as $candidate) {
-            $value = getenv($candidate);
+        $value = EnvironmentVariable::read(
+            $name,
+            Constants::LEGACY_ENV_VARS[$name] ?? $name,
+            self::PLACEHOLDER
+        );
 
-            if ($value === false && isset($_ENV[$candidate])) {
-                $value = $_ENV[$candidate];
-            }
-
-            if (!empty($value) && $value !== self::PLACEHOLDER) {
-                return (string) $value;
-            }
-        }
-
-        return null;
+        return $value === '' ? null : $value;
     }
 
     /**
@@ -67,33 +63,8 @@ class ResourceKeys
      */
     public static function missingMessage(string $name): string
     {
-        $names = self::namesFor($name);
-        $legacy = count($names) > 1 ? $names[1] : null;
-
-        $message = "No resource key found. Set the environment variable " .
-            "'" . $names[0] . "'";
-
-        if ($legacy !== null) {
-            $message .= " (the older name '" . $legacy . "' is still read)";
-        }
-
-        return $message . '. Create a resource key for free at ' .
+        return "No resource key found. Set the environment variable " .
+            "'" . $name . "'. Create a resource key for free at " .
             'https://configure.51degrees.com?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=tests-classes-resourcekeys.php&utm_term=resource-key-required';
-    }
-
-    /**
-     * The variable names to try, aligned name first.
-     *
-     * @return array<int, string>
-     */
-    private static function namesFor(string $name): array
-    {
-        $names = [$name];
-
-        if (isset(Constants::LEGACY_ENV_VARS[$name])) {
-            $names[] = Constants::LEGACY_ENV_VARS[$name];
-        }
-
-        return $names;
     }
 }

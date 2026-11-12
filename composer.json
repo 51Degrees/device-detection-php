@@ -1,6 +1,6 @@
 {
     "name": "51degrees/fiftyone.devicedetection",
-    "description": "High-performance device detection engines for the 51Degrees Pipeline API. Accurately identify devices, operating systems, browsers, and crawlers from HTTP headers.",
+    "description": "Device Detection and User-Agent parser for PHP, built on the 51Degrees Pipeline API. Detects the device, browser, operating system, and crawlers from the User-Agent and User-Agent Client Hints, using the 51Degrees cloud service. An alternative to UAParser.js, DeviceAtlas, and WURFL.",
     "keywords":
     [
         "user agent",
@@ -13,6 +13,13 @@
         "parser",
         "devicedetection",
         "51degrees",
+        "device-detection",
+        "user-agent",
+        "user-agent-parser",
+        "client-hints",
+        "browser-detection",
+        "mobile-detection",
+        "crawler-detection",
         "wurfl",
         "deviceatlas"
     ],

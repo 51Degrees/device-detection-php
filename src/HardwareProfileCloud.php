@@ -46,6 +46,8 @@ class HardwareProfileCloud extends CloudEngine
     {
         $cloudData = $flowData->get('cloud')->get('cloud');
 
+        $this->logMissingProduct($flowData);
+
         $cloudData = json_decode($cloudData, true);
 
         $hardware = $cloudData['hardware'] ?? null;

@@ -133,16 +133,6 @@ class GettingStartedWeb
         // client side provided information)
         $flowdata->evidence->setFromWebRequest();
 
-        // Process the flowdata
-        $flowdata->process();
-
-        // Some browsers require that extra HTTP headers are explicitly
-        // requested. So set whatever headers are required by the browser in
-        // order to return the evidence needed by the pipeline.
-        // More info on this can be found at
-        // https://51degrees.com/blog/user-agent-client-hints?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-classes-gettingstartedweb.php&utm_term=processrequest
-        Utils::setResponseHeader($flowdata);
-
         // The .NET and Java APIs have web integration packages which intercept
         // requests for the pipeline resources. There is no equivalent for PHP, and
         // the built-in PHP server routes every request to this single script, so
@@ -152,9 +142,10 @@ class GettingStartedWeb
         // Serve the client-side JavaScript built by the JavaScriptBuilder element.
         // The path matches the one used by the .NET, Java and Rust examples so that
         // the page can reference the script by name instead of inlining it.
+        // Utils processes the flowdata itself and sets the cache headers, so a
+        // browser revalidating its copy gets a 304 without any processing.
         if ($path === '/51Degrees.core.js') {
-            header('Content-Type: application/x-javascript');
-            $output($flowdata->javascriptbuilder->javascript);
+            Utils::javascriptResponse($flowdata)->send($output);
 
             return;
         }
@@ -163,11 +154,20 @@ class GettingStartedWeb
         // and will return a JSON encoded property database using any additional
         // evidence provided by the client.
         if ($path === '/json') {
-            header('Content-Type: application/json');
-            $output(json_encode($flowdata->jsonbundler->json));
+            Utils::jsonResponse($flowdata)->send($output);
 
             return;
         }
+
+        // Process the flowdata
+        $flowdata->process();
+
+        // Some browsers require that extra HTTP headers are explicitly
+        // requested. So set whatever headers are required by the browser in
+        // order to return the evidence needed by the pipeline.
+        // More info on this can be found at
+        // https://51degrees.com/blog/user-agent-client-hints?utm_source=code&utm_medium=example&utm_campaign=51degrees-php&utm_content=examples-cloud-classes-gettingstartedweb.php&utm_term=processrequest
+        Utils::setResponseHeader($flowdata);
 
         include_once __DIR__ . '/../static/page.php';
     }

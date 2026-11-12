@@ -14,20 +14,12 @@ if (!$Keys.TestResourceKey) {
 }
 
 # Resource key environment variables follow the 51Degrees convention, which
-# is that every one of them starts with '_51DEGREES_RESOURCE_KEY'. The names
-# used before the convention was adopted are still set here, so anything not
-# yet moved over keeps working, and the tests prefer the aligned names.
+# is that every one of them starts with '_51DEGREES_RESOURCE_KEY'.
 $env:_51DEGREES_RESOURCE_KEY = $Keys.TestResourceKey
 $env:_51DEGREES_RESOURCE_KEY_ACCEPTCH_PLATFORM = $Keys.TestResourceKey
 $env:_51DEGREES_RESOURCE_KEY_ACCEPTCH_HARDWARE = $Keys.TestResourceKey
 $env:_51DEGREES_RESOURCE_KEY_ACCEPTCH_BROWSER = $Keys.TestResourceKey
 $env:_51DEGREES_RESOURCE_KEY_ACCEPTCH_NONE = $Keys.TestResourceKey
-
-$env:resource_key = $Keys.TestResourceKey
-$env:AcceptChPlatformKey = $Keys.TestResourceKey
-$env:AcceptChHardwareKey = $Keys.TestResourceKey
-$env:AcceptChBrowserKey = $Keys.TestResourceKey
-$env:AcceptChNoneKey = $Keys.TestResourceKey
 
 ./php/run-integration-tests.ps1 -RepoName $RepoName
 $status = $LASTEXITCODE
@@ -40,7 +32,7 @@ try {
         composer install --working-dir=..
         $env:PORT = 8096
         $env:_51DEGREES_RESOURCE_KEY = $Keys.TestResourceKey
-        $env:cloud_endpoint = "https://cloud.51degrees.com/api/v4/"
+        $env:_51DEGREES_CLOUD_ENDPOINT = "https://cloud.51degrees.com/api/v4/"
         $example = php -S "localhost:$env:PORT" cloud/gettingStartedWeb.php 2>&1 &
     } finally { Pop-Location }
 
@@ -50,6 +42,16 @@ try {
     }
     # Wait for the example to come up.
     curl -sS -o /dev/null --retry 5 --retry-connrefused "http://localhost:$env:PORT"
+
+    # Every browser test needs the client-side script, so check the example
+    # serves it first. Otherwise a broken route shows only as each test timing
+    # out, and the example's output is never printed.
+    $coreJs = Join-Path ([IO.Path]::GetTempPath()) '51Degrees.core.js'
+    $answer = curl -sS -o $coreJs -w '%{http_code} %{content_type}' "http://localhost:$env:PORT/51Degrees.core.js"
+    if ($answer -notlike '200 application/x-javascript*' -or
+        -not (Select-String -Quiet -SimpleMatch 'fiftyoneDegreesManager' $coreJs)) {
+        throw "The example answered /51Degrees.core.js with '$answer' and no client-side script."
+    }
 
     $env:CLOUD_ROOT_URL = "https://cloud.51degrees.com/"
     $env:PAID_RESOURCE_KEY = $Keys.TestResourceKey

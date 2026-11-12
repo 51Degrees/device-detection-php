@@ -5,7 +5,7 @@
          values here are placeholders. Real keys come from the environment,
          which PHPUnit does not overwrite. -->
     <env name="_51DEGREES_RESOURCE_KEY" value="!!YOUR_RESOURCE_KEY!!"/>
-    <env name="FOD_CLOUD_API_URL" value=""/>
+    <env name="_51DEGREES_CLOUD_ENDPOINT" value=""/>
     <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_PLATFORM" value="!!YOUR_RESOURCE_KEY!!"/>
     <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_HARDWARE" value="!!YOUR_RESOURCE_KEY!!"/>
     <env name="_51DEGREES_RESOURCE_KEY_ACCEPTCH_BROWSER" value="!!YOUR_RESOURCE_KEY!!"/>
@@ -17,6 +17,7 @@
          which is what makes a broken example show as red. -->
     <testsuite name="Unit">
       <file>tests/HardwareProfileCloudTest.php</file>
+      <file>tests/EnvironmentVariableTests.php</file>
     </testsuite>
     <testsuite name="Integration">
       <file>tests/ExampleTests.php</file>

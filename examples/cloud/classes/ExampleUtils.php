@@ -32,9 +32,12 @@ class ExampleUtils
     // resource key variable starts with '_51DEGREES_RESOURCE_KEY'.
     public const RESOURCE_KEY_ENV_VAR = '_51DEGREES_RESOURCE_KEY';
 
-    // The environment variable this repository used before the convention
-    // above was adopted. It is still read, so an existing setup keeps
-    // working, but new setups should use RESOURCE_KEY_ENV_VAR.
+    /**
+     * The environment variable read for the resource key when
+     * RESOURCE_KEY_ENV_VAR is not set or is empty.
+     *
+     * @deprecated use {@see ExampleUtils::RESOURCE_KEY_ENV_VAR}
+     */
     public const LEGACY_RESOURCE_KEY_ENV_VAR = 'resource_key';
 
     // The query string parameter the web examples accept a resource key on.
@@ -42,22 +45,35 @@ class ExampleUtils
     // own name.
     public const RESOURCE_KEY_QUERY_PARAM = 'resource_key';
 
+    // The environment variable that can name the cloud service to use.
+    public const CLOUD_ENDPOINT_VARIABLE = '_51DEGREES_CLOUD_ENDPOINT';
+
+    /**
+     * The environment variable read for the cloud service when
+     * CLOUD_ENDPOINT_VARIABLE is not set or is empty.
+     *
+     * @deprecated use {@see ExampleUtils::CLOUD_ENDPOINT_VARIABLE}
+     */
     public const ENDPOINT_ENV_VAR = 'cloud_endpoint';
 
     public static function getResourceKeyFromEnv()
     {
-        $key = self::getEnvVariable(self::RESOURCE_KEY_ENV_VAR);
+        $key = EnvironmentVariable::read(
+            self::RESOURCE_KEY_ENV_VAR,
+            self::LEGACY_RESOURCE_KEY_ENV_VAR
+        );
 
-        if (empty($key)) {
-            $key = self::getEnvVariable(self::LEGACY_RESOURCE_KEY_ENV_VAR);
-        }
-
-        return $key;
+        return $key === '' ? null : $key;
     }
 
     public static function getCloudEndpoint()
     {
-        return self::getEnvVariable(self::ENDPOINT_ENV_VAR);
+        $endpoint = EnvironmentVariable::read(
+            self::CLOUD_ENDPOINT_VARIABLE,
+            self::ENDPOINT_ENV_VAR
+        );
+
+        return $endpoint === '' ? null : $endpoint;
     }
 
     public static function getResourceKeyFromCliArgs($argv)
@@ -228,12 +244,5 @@ class ExampleUtils
         }
 
         return $value instanceof AspectPropertyValue ? $value : null;
-    }
-
-    private static function getEnvVariable($name)
-    {
-        $env = getenv();
-
-        return $env[$name] ?? null;
     }
 }
